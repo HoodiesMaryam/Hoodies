@@ -1414,10 +1414,15 @@
       document.getElementById('cartBtn').addEventListener('click', function() {
         updateCartModal();
         document.getElementById('cartModal').classList.remove('hidden');
+        history.pushState({ modal: 'cart' }, '', '#cart'); // Add state for cart modal
       });
 
       document.getElementById('closeCart').addEventListener('click', function() {
         document.getElementById('cartModal').classList.add('hidden');
+        // Go back in history if the current state is the cart modal
+        if (history.state && history.state.modal === 'cart') {
+            history.back();
+        }
       });
 
       // Proceed to Checkout button in Cart Modal
@@ -2197,14 +2202,14 @@
         notificationItem.classList.add('show');
       }, 10);
 
-      // Hide and remove after 4 seconds (changed from 3 seconds)
+      // Hide and remove after 1 second
       setTimeout(() => {
         notificationItem.classList.remove('show');
         notificationItem.classList.add('hide');
         notificationItem.addEventListener('transitionend', () => {
           notificationItem.remove();
         }, { once: true });
-      }, 4000); // Changed to 4000 milliseconds (4 seconds)
+      }, 1000); // Changed to 1000 milliseconds (1 second)
     }
 
     // ** Function to send message to Telegram **
