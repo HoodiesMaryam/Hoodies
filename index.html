@@ -634,9 +634,12 @@
         <!-- Cart and Menu -->
         <div class="flex items-center space-x-4 space-x-reverse">
           <button id="cartBtn" class="relative p-2 text-white hover:text-blue-100 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 7.5M7 13v7a2 2 0 002 2h6a2 2 0 002-2v-7m-8 0V9a2 2 0 012-2h4a2 2 0 012 2v4m-6 0h4"></path>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="9" cy="21" r="1"></circle>
+  <circle cx="20" cy="21" r="1"></circle>
+  <path d="M5 6h16l-1.5 9h-13z"></path>
+  <path d="M5 6L4 3H1"></path>
+</svg>
             <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-300 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
           </button>
           
@@ -1541,15 +1544,28 @@
 
       // Handle browser back/forward button
       window.addEventListener('popstate', function(event) {
-        // If the user is on the checkout page and presses back, redirect to home
-        if (document.getElementById('checkoutPage').classList.contains('active')) {
-          showPage('home');
+        const productDetailModal = document.getElementById('productDetailModal');
+        const cartModal = document.getElementById('cartModal');
+        const checkoutPage = document.getElementById('checkoutPage');
+
+        if (!productDetailModal.classList.contains('hidden')) {
+            // If product detail modal is open, close it
+            closeProductDetailModal();
+            // Prevent default popstate behavior (which would navigate back further)
+            history.pushState({ modal: 'productDetail' }, '', '#productDetail'); // Re-add state to prevent going back twice
+        } else if (!cartModal.classList.contains('hidden')) {
+            // If cart modal is open, close it
+            cartModal.classList.add('hidden');
+            history.pushState({ modal: 'cart' }, '', '#cart'); // Re-add state
+        } else if (checkoutPage.classList.contains('active')) {
+            // If on checkout page, go back to home
+            showPage('home');
         } else if (event.state && event.state.page) {
-          // If there's a state, navigate to that page
-          showPage(event.state.page);
+            // If there's a state, navigate to that page
+            showPage(event.state.page);
         } else {
-          // Default to home if no specific state
-          showPage('home');
+            // Default to home if no specific state
+            showPage('home');
         }
       });
 
@@ -1749,10 +1765,15 @@
 
       updateProductDetailModalButtons();
       document.getElementById('productDetailModal').classList.remove('hidden');
+      history.pushState({ modal: 'productDetail' }, '', '#productDetail'); // Add state for modal
     }
 
     function closeProductDetailModal() {
       document.getElementById('productDetailModal').classList.add('hidden');
+      // Remove the modal state from history if it's the current state
+      if (history.state && history.state.modal === 'productDetail') {
+          history.back(); // Go back to the previous state (e.g., home page)
+      }
     }
 
     // New: Image Gallery Functions
