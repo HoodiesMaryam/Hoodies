@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هوديز</title>
+  <title>Hoodies</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
   <!-- Intersection Observer Polyfill for wider browser support -->
@@ -13,14 +13,15 @@
     
     * {
       font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem; /* Slightly reduced base font size */
     }
     
     :root {
-      --primary-blue: #e0f2f7; /* Lightest blue, almost white */
-      --light-blue: #b3e0f2;  /* Light blue */
-      --medium-blue: #85c1e9; /* Medium blue */
-      --dark-blue: #3498db;   /* Darker blue */
-      --header-blue-medium: #2196F3; /* Header blue */
+      --primary-blue: #1a1a1a; /* Darkest gray/black */
+      --light-blue: #333333;  /* Dark gray */
+      --medium-blue: #555555; /* Medium gray */
+      --dark-blue: #777777;   /* Lighter gray */
+      --header-blue-medium: #222222; /* Header dark gray */
     }
     
     .gradient-blue {
@@ -33,7 +34,7 @@
     
     .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(33, 150, 243, 0.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Darker shadow */
     }
     
     .product-image {
@@ -67,7 +68,7 @@
     
     .modal {
       backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(0, 0, 0, 0.7); /* Darker modal background */
     }
 
     .modal-content {
@@ -80,25 +81,25 @@
     }
     
     .heart-icon:hover {
-      color: #2196F3;
+      color: #444444; /* Dark gray hover */
       transform: scale(1.2);
     }
     
     .heart-icon.liked {
-      color: #2196F3;
+      color: #444444; /* Dark gray liked */
       transform: scale(1.1);
     }
     
     .navbar-glass {
       backdrop-filter: blur(20px);
       background: var(--header-blue-medium);
-      border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       transition: background 0.3s ease-in-out;
     }
 
     .navbar-glass.scrolled {
-      background: rgba(33, 150, 243, 0.8);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: rgba(0, 0, 0, 0.8); /* Darker scrolled navbar */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .store-title {
@@ -106,30 +107,30 @@
       font-weight: 700;
       font-size: 2.5rem;
       color: #fff;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
     }
     
     /* Custom CSS for filter buttons */
     .filter-button {
       transition: all 0.3s ease;
-      background-color: white; /* Default background */
-      color: var(--dark-blue); /* Default text color */
-      border: 1px solid var(--light-blue);
+      background-color: #333; /* Default background */
+      color: #eee; /* Default text color */
+      border: 1px solid #555;
     }
     
     .filter-button:hover {
-      background-color: var(--light-blue);
-      color: var(--header-blue-medium);
+      background-color: #555;
+      color: #fff;
       transform: translateY(-2px); /* Slight lift on hover */
-      box-shadow: 0 4px 8px rgba(33, 150, 243, 0.1); /* Subtle shadow on hover */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
     }
     
     .filter-button.active {
-      background: var(--header-blue-medium); /* Active background */
+      background: #000; /* Active background */
       color: white; /* Active text color */
       transform: scale(1.05); /* Slight scale on active */
-      box-shadow: 0 4px 8px rgba(33, 150, 243, 0.2); /* Stronger shadow on active */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow on active */
     }
     /* End Custom CSS for filter buttons */
 
@@ -142,17 +143,17 @@
     }
 
     img {
-      background: linear-gradient(135deg, #e0f2f7 0%, #b3e0f2 100%);
+      background: linear-gradient(135deg, #333 0%, #555 100%); /* Darker image placeholder */
       position: relative;
     }
 
     img:before {
-      content: "صورة المنتج";
+      content: "Product Image"; /* Changed to English */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #3498db;
+      color: #aaa; /* Lighter text for placeholder */
       font-size: 14px;
       text-align: center;
     }
@@ -164,28 +165,30 @@
     }
 
     .option-selected {
-        border-color: #2196F3;
-        box-shadow: 0 0 0 2px #2196F3;
+        border-color: #000; /* Black border for selected option */
+        box-shadow: 0 0 0 2px #000;
         transform: scale(1.05); /* Added animation for selected option */
+        background-color: #000; /* Black background for selected option */
+        color: white; /* White text for selected option */
     }
     
-    /* تعديلات ألوان النصوص الوصفية */
-    .product-description, /* هذا يغطي وصف المنتج في الصفحة الرئيسية وصفحة المفضلة */
-    #modalProductDescription { /* هذا يغطي وصف المنتج داخل النافذة المنبثقة لتفاصيل المنتج */
-      color: #000000 !important; /* لون أسود */
-      font-size: 0.9rem; /* زيادة حجم الخط */
-      line-height: 1.5; /* تحسين تباعد السطور */
-      margin-bottom: 1rem; /* زيادة المسافة */
-      font-weight: 400; /* سمك الخط مناسب */
+    /* Description text colors */
+    .product-description,
+    #modalProductDescription {
+      color: #000000 !important; /* Dark gray */
+      font-size: 0.85rem; /* Slightly smaller font size */
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-weight: 400;
     }
 
-    /* تعديلات ألوان النصوص داخل سلة التسوق */
+    /* Cart text colors */
     #cartItems p {
-        color: #000000 !important;  /* تغيير لون النص إلى أسود */
+        color: #333333 !important;  /* Dark gray */
     }
     
     #cartItems .text-xs {
-        color: #666 !important;     /* لون النص الفرعي (أفتح قليلاً) */
+        color: #666 !important;     /* Medium gray */
     }
 
     /* Animation on scroll styles */
@@ -213,7 +216,7 @@
 
     /* Checkout Page Specific Styles */
     #checkoutPage {
-      padding-top: 80px; /* Adjust based on navbar height */
+      padding-top: 80px;
     }
     .checkout-container {
       max-width: 800px;
@@ -223,11 +226,11 @@
     .checkout-card {
       background-color: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(33, 150, 243, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       padding: 2rem;
     }
     .checkout-title {
-      color: #2196F3;
+      color: #222222; /* Dark gray */
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 1.5rem;
@@ -238,12 +241,12 @@
     }
     .form-label {
       display: block;
-      color: #2196F3;
+      color: #222222; /* Dark gray */
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
     .form-input {
-      border: 1px solid var(--light-blue);
+      border: 1px solid #555; /* Medium gray border */
       border-radius: 8px;
       padding: 0.75rem;
       width: 100%;
@@ -252,16 +255,16 @@
       transition: all 0.3s ease;
     }
     .form-input:focus {
-      border-color: #2196F3;
-      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+      border-color: #222222; /* Dark gray focus */
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
       outline: none;
     }
     .order-summary-title {
-      color: #2196F3;
+      color: #222222; /* Dark gray */
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      border-bottom: 1px solid var(--light-blue);
+      border-bottom: 1px solid #555; /* Medium gray border */
       padding-bottom: 0.5rem;
     }
     .order-summary-item {
@@ -269,7 +272,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 0;
-      border-bottom: 1px dashed var(--light-blue);
+      border-bottom: 1px dashed #000000; /* Changed to black */
     }
     .order-summary-item:last-child {
       border-bottom: none;
@@ -283,15 +286,15 @@
     }
     .order-summary-item-details {
       flex-grow: 1;
-      color: #000;
+      color: #000000; /* Changed to black */
     }
     .order-summary-item-details h4 {
       font-weight: 600;
-      color: #2196F3;
+      color: #000000; /* Changed to black */
     }
     .order-summary-item-details p {
       font-size: 0.85rem;
-      color: #666;
+      color: #000000; /* Changed to black */
     }
     .order-summary-total {
       display: flex;
@@ -300,10 +303,10 @@
       padding-top: 1rem;
       font-size: 1.25rem;
       font-weight: 700;
-      color: #2196F3;
+      color: #222222; /* Dark gray */
     }
     .confirm-order-btn {
-      background-color: #2196F3;
+      background-color: #222222; /* Dark gray */
       color: white;
       font-weight: 600;
       padding: 0.75rem 1.5rem;
@@ -315,7 +318,7 @@
       margin-top: 2rem;
     }
     .confirm-order-btn:hover {
-      background-color: #1a7ad9;
+      background-color: #000; /* Black hover */
       transform: translateY(-2px);
     }
     .confirm-order-btn:active {
@@ -330,16 +333,16 @@
       z-index: 1000;
       display: flex;
       flex-direction: column;
-      align-items: flex-end; /* Align notifications to the right */
+      align-items: flex-end;
     }
 
     .notification-item {
-      background-color: #10B981; /* Default green for success */
+      background-color: #28a745; /* Green for success */
       color: white;
       padding: 16px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      margin-bottom: 10px; /* Space between multiple notifications */
+      margin-bottom: 10px;
       opacity: 0;
       transform: translateY(-20px);
       transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -369,25 +372,25 @@
 
     /* Style for regular (non-success) notifications */
     .notification-item.regular {
-      background-color: #2196F3; /* Blue for regular messages */
+      background-color: #333333; /* Dark gray for regular messages */
     }
     /* Style for error notifications */
     .notification-item.error {
-      background-color: #EF4444; /* Red for error messages */
+      background-color: #dc3545; /* Red for error messages */
     }
 
     /* Tailwind overrides for new color scheme */
     .bg-gradient-to-br {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, #ffffff 100%) !important;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%) !important;
     }
-    .text-blue-400 { color: #2196F3 !important; }
-    .text-blue-300 { color: #3498db !important; }
-    .text-blue-200 { color: #85c1e9 !important; }
-    .bg-blue-300 { background-color: #3498db !important; }
-    .hover\:bg-blue-400:hover { background-color: #2196F3 !important; }
-    .border-blue-100 { border-color: #b3e0f2 !important; }
-    .focus\:border-blue-200:focus { border-color: #85c1e9 !important; }
-    .bg-blue-50 { background-color: #e0f2f7 !important; }
+    .text-blue-400 { color: #eeeeee !important; } /* Light gray text */
+    .text-blue-300 { color: #cccccc !important; } /* Lighter gray text */
+    .text-blue-200 { color: #aaaaaa !important; } /* Even lighter gray text */
+    .bg-blue-300 { background-color: #333333 !important; } /* Dark gray background */
+    .hover\:bg-blue-400:hover { background-color: #000000 !important; } /* Black hover */
+    .border-blue-100 { border-color: #555555 !important; } /* Medium gray border */
+    .focus\:border-blue-200:focus { border-color: #777777 !important; } /* Lighter gray focus */
+    .bg-blue-50 { background-color: #1a1a1a !important; } /* Darkest gray background */
 
     /* Image Gallery Styles */
     .product-gallery {
@@ -441,7 +444,7 @@
     .gallery-btn svg {
       width: 20px;
       height: 20px;
-      color: #2196F3;
+      color: #222222; /* Dark gray */
     }
 
     .gallery-thumbnails {
@@ -463,13 +466,13 @@
     }
 
     .thumbnail:hover {
-      border-color: #2196F3;
+      border-color: #222222; /* Dark gray */
       transform: scale(1.05);
     }
 
     .thumbnail.active {
-      border-color: #2196F3;
-      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+      border-color: #222222; /* Dark gray */
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
     }
 
     .image-counter {
@@ -488,7 +491,7 @@
     .side-menu {
       position: fixed;
       top: 0;
-      left: -300px; /* Hidden by default */
+      left: -300px;
       width: 280px;
       height: 100%;
       background-color: #fff;
@@ -517,13 +520,6 @@
 
     .side-menu-overlay.open {
       display: block;
-    }
-
-    .side-menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
     }
 
     .side-menu-header h3 {
@@ -588,12 +584,12 @@
 
     .color-option-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
     }
 
     .color-option-btn.option-selected {
-      border-color: #2196F3;
-      box-shadow: 0 0 0 3px #2196F3;
+      border-color: #000; /* Black border */
+      box-shadow: 0 0 0 3px #000;
       transform: scale(1.15);
     }
 
@@ -607,8 +603,72 @@
     .color-option-btn[data-color="أخضر"] { background-color: #008000; }
     .color-option-btn[data-color="بني"] { background-color: #A52A2A; }
     .color-option-btn[data-color="زيتي"] { background-color: #6B8E23; }
-    .color-option-btn[data-color="متعدد"] { background-color: #ccc; color: #333; font-size: 0.7rem; } /* For 'متعدد' option */
+    .color-option-btn[data-color="متعدد"] { background-color: #ccc; color: #333; font-size: 0.7rem; }
 
+    /* Custom CSS for black product names and prices */
+    .product-card h3,
+    #modalProductName {
+      color: #000000 !important; /* Force black color */
+    }
+
+    /* Price in green */
+    .product-card span.text-xl,
+    #modalProductPrice {
+      color: #008000 !important; /* Force green color */
+    }
+
+    /* Black text for Price, Availability, Sizes, Colors labels */
+    .text-lg.font-semibold.text-blue-400 {
+        color: #000000 !important; /* Black for Price, Availability, Sizes, Colors labels */
+    }
+
+    /* Black text for size buttons */
+    #sizesContainer button {
+        color: #000000 !important; /* Black for size button text */
+    }
+
+    /* Selected size/color button styling */
+    #sizesContainer button.option-selected,
+    #colorsContainer button.option-selected {
+        background-color: #000 !important; /* Black background */
+        color: white !important; /* White text */
+    }
+
+    /* Cart Modal Specific Styles */
+    #cartModal h2 {
+        color: #000000 !important; /* Shopping Cart title in black */
+    }
+
+    #cartItems h4 {
+        color: #000000 !important; /* Product name in cart in black */
+    }
+
+    #cartItems p {
+        color: #000000 !important; /* Product details in cart in black */
+    }
+
+    #cartItems button svg {
+        color: #FF0000 !important; /* Remove from cart icon in red */
+    }
+
+    #cartTotal {
+        color: #008000 !important; /* Cart total in green */
+    }
+
+    /* Specific style for the important note section */
+    .checkout-card .bg-yellow-100 {
+        background-color: #ffe0e0 !important; /* Light red background */
+        border-color: #ff0000 !important; /* Red border */
+        color: #ff0000 !important; /* Red text */
+    }
+    .checkout-card .bg-yellow-100 p {
+        color: #ff0000 !important; /* Ensure paragraph text is red */
+    }
+
+    /* Checkout page delete icon color */
+    #checkoutOrderSummary button svg {
+        color: #FF0000 !important; /* Red for delete icon on checkout page */
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-white min-h-screen">
@@ -617,12 +677,12 @@
   <nav class="fixed top-0 w-full z-50 navbar-glass" id="navbar">
     <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold cursor-pointer store-title" onclick="showPage('home')">هوديز</div>
+        <div class="text-2xl font-bold cursor-pointer store-title" onclick="showPage('home')">Hoodies</div>
         
         <!-- Search Bar -->
         <div class="hidden md:flex flex-1 max-w-md mx-8">
           <div class="relative w-full">
-            <input type="text" id="searchInput" placeholder="ابحث عن المنتجات..." class="w-full px-4 py-2 rounded-full border border-blue-100 focus:outline-none focus:border-blue-200 bg-white">
+            <input type="text" id="searchInput" placeholder="Search products..." class="w-full px-4 py-2 rounded-full border border-blue-100 focus:outline-none focus:border-blue-200 bg-white">
             <button class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -634,12 +694,9 @@
         <!-- Cart and Menu -->
         <div class="flex items-center space-x-4 space-x-reverse">
           <button id="cartBtn" class="relative p-2 text-white hover:text-blue-100 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="9" cy="21" r="1"></circle>
-  <circle cx="20" cy="21" r="1"></circle>
-  <path d="M5 6h16l-1.5 9h-13z"></path>
-  <path d="M5 6L4 3H1"></path>
-</svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 7.5M7 13v7a2 2 0 002 2h6a2 2 0 002-2v-7m-8 0V9a2 2 0 012-2h4a2 2 0 012 2v4m-6 0h4"></path>
+            </svg>
             <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-300 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
           </button>
           
@@ -664,25 +721,25 @@
   <div id="sideMenuOverlay" class="side-menu-overlay"></div>
   <div id="sideMenu" class="side-menu">
     <div class="side-menu-header">
-      <h3>تواصل معنا</h3>
+      <h3>Contact Us</h3>
       <button id="closeSideMenu" class="side-menu-close-btn">&times;</button>
     </div>
     <div class="social-links flex-grow">
       <a href="https://www.facebook.com/yourpage" target="_blank">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.25 6 14 6c1.65 0 2.48.12 2.83.25V8h-1.66c-1.12 0-1.33.53-1.33 1.32V12h3l-.48 3H14v6.79c5.05-.5 9-4.76 9-9.79z"/></svg>
-        فيسبوك
+        Facebook
       </a>
       <a href="https://www.instagram.com/yourpage" target="_blank">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.8 2.8 0 005 7.8v8.4c0 1.54 1.26 2.8 2.8 2.8h8.4a2.8 2.8 0 002.8-2.8V7.8A2.8 2.8 0 0016.2 5H7.6zm9.65 2.25a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>
-        انستغرام
+        Instagram
       </a>
       <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2c-5.45 0-9.91 4.46-9.91 9.91 0 1.75.5 3.45 1.46 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.45 0 9.91-4.46 9.91-9.91S17.49 2 12.04 2zm.04 1.67c4.5 0 8.24 3.74 8.24 8.24 0 4.5-3.74 8.24-8.24 8.24-1.48 0-2.9-.4-4.13-1.17l-.3-.18-3.1 1.02 1.04-3.04-.2-.32c-.8-1.28-1.22-2.75-1.22-4.25 0-4.5 3.74-8.24 8.24-8.24zm-3.2 5.27c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.3-.1.1-.2.2-.2.4-.05.2-.05.4-.05.6s.05.4.1.6c.05.2.1.3.2.4.1.1.2.2.4.3.2.1.4.2.6.2.2 0 .4-.05.6-.14.2-.09.4-.2.5-.3.1-.1.2-.2.2-.4.05-.2.05-.4.05-.6s-.05-.4-.1-.6c-.05-.2-.1-.3-.2-.4-.1-.1-.2-.2-.4-.3zm3.2 0c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.3-.1.1-.2.2-.2.4-.05.2-.05.4-.05.6s.05.4.1.6c.05.2.1.3.2.4.1.1.2.2.4.3.2.1.4.2.6.2.2 0 .4-.05.6-.14.2-.09.4-.2.5-.3.1-.1.2-.2.2-.4.05-.2.05-.4.05-.6s-.05-.4-.1-.6c-.05-.2-.1-.3-.2-.4-.1-.1-.2-.2-.4-.3zm3.2 0c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.3-.1.1-.2.2-.2.4-.05.2-.05.4-.05.6s.05.4.1.6c.05.2.1.3.2.4.1.1.2.2.4.3.2.1.4.2.6.2.2 0 .4-.05.6-.14.2-.09.4-.2.5-.3.1-.1.2-.2.2-.4.05-.2.05-.4.05-.6s-.05-.4-.1-.6c-.05-.2-.1-.3-.2-.4-.1-.1-.2-.2-.4-.3z"/></svg>
-        واتساب
+        WhatsApp
       </a>
       <a href="https://www.tiktok.com/@yourpage" target="_blank">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 2.001c.001 0 .001 0 .001 0v14.001c0 1.105-.896 2-2 2-.552 0-1-.448-1-1s.448-1 1-1c.552 0 1-.448 1-1V8.001c0-.552-.448-1-1-1s-1 .448-1 1v6.001c0 2.209 1.791 4 4 4 2.209 0 4-1.791 4-4V2.001h2v12.001c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6V2.001h2z"/></svg>
-        تيك توك
+        TikTok
       </a>
     </div>
   </div>
@@ -694,14 +751,14 @@
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div class="fade-in">
-            <h1 class="text-5xl md:text-6xl font-bold text-blue-400 mb-6 animate-on-scroll">هوديز وسويت بانتس عصرية</h1>
-            <p class="text-xl text-blue-300 mb-8 animate-on-scroll">اكتشف مجموعتنا الحصرية من الهوديز والسويت بانتس العصرية والأنيقة</p>
-            <button class="bg-blue-300 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors animate-on-scroll" onclick="scrollToProducts()">
-              تسوق الآن
+            <h1 class="text-5xl md:text-6xl font-bold text-blue-400 mb-6 animate-on-scroll">Trendy Hoodies & Sweatpants</h1>
+            <p class="text-xl text-blue-300 mb-8 animate-on-scroll">Discover our exclusive collection of modern and stylish hoodies and sweatpants</p>
+            <button class="bg-red-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-black transition-colors animate-on-scroll" onclick="scrollToProducts()">
+              Shop Now
             </button>
           </div>
           <div class="fade-in">
-            <img src="https://cdn.salla.sa/DOjpl/eabf9a25-1beb-47c8-937d-e9187d3391b1-683x1000-xq2k97Eb2eM4Cjgd6VKtCVXSWgxLBhGFq2eoxgNV.jpg" alt="Young man wearing stylish hoodie and sweatpants, modern urban fashion, professional photography with soft lighting" class="rounded-lg shadow-xl w-full animate-scale-in" />
+            <img src="https://cdn.salla.sa/DOjpl/eabf9a25-1beb-47c8-937d-e9187d3391b1-683x1000-xq2k97Eb2eM4Cjgd6VKtCVXSWgxLBhGFq2eoxgNV.jpg" alt="Young man wearing stylish hoodie and sweatpants, modern urban urban fashion, professional photography with soft lighting" class="rounded-lg shadow-xl w-full animate-scale-in" />
           </div>
         </div>
       </div>
@@ -712,19 +769,19 @@
       <div class="container mx-auto px-6">
         <div class="flex flex-wrap justify-center gap-4 animate-on-scroll">
           <button class="filter-button px-6 py-3 rounded-full border active" data-category="all">
-            جميع المنتجات
+            All Products
           </button>
           <button class="filter-button px-6 py-3 rounded-full border" data-category="hoodies">
-            هوديز
+            Hoodies
           </button>
           <button class="filter-button px-6 py-3 rounded-full border" data-category="sweatpants">
-            سويت بانتس
+            Sweatpants
           </button>
           <button class="filter-button px-6 py-3 rounded-full border" data-category="sets">
-            أطقم
+            Sets
           </button>
           <button class="filter-button px-6 py-3 rounded-full border" data-category="jackets">
-            جاكيتات
+            Jackets
           </button>
         </div>
       </div>
@@ -734,11 +791,11 @@
     <section class="py-16" id="productsSection">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-blue-400 mb-4 animate-on-scroll">منتجاتنا المميزة</h2>
-          <p class="text-blue-300 text-lg animate-on-scroll">اختر من مجموعتنا الواسعة من الملابس الشبابية الأنيقة</p>
+          <h2 class="text-4xl font-bold text-blue-400 mb-4 animate-on-scroll">Our Featured Products</h2>
+          <p class="text-blue-300 text-lg animate-on-scroll">Choose from our wide range of stylish youth apparel</p>
         </div>
         
-        <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div id="productsGrid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <!-- Product 1: Basic Hoodie -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
                data-category="hoodies"
@@ -749,7 +806,7 @@
                data-images='["https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&s", "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"]'
                data-color-images='{"أسود": "https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "رمادي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&amp;s", "أزرق": "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "أبيض": "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"}'>
             <div class="relative">
-              <img src="https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg" alt="هودي أساسي" class="w-full h-64 object-cover product-image" />
+              <img src="https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg" alt="Basic Hoodie" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -757,12 +814,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">هودي أساسي</h3>
-              <p class="product-description">هودي مريح وعصري، مثالي للارتداء اليومي</p>
+              <h3 class="text-lg font-semibold mb-2">Basic Hoodie</h3>
+              <p class="product-description">Comfortable and modern hoodie, perfect for daily wear</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">300 جنيه</span>
+                <span class="text-xl font-bold">300 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -778,7 +835,7 @@
                data-images='["https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"]'
                data-color-images='{"أسود": "https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "رمادي": "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "كحلي": "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"}'>
             <div class="relative">
-              <img src="https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg" alt="سويت بانتس بقصة ضيقة" class="w-full h-64 object-cover product-image" />
+              <img src="https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg" alt="Slim Fit Sweatpants" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -786,12 +843,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">سويت بانتس بقصة ضيقة</h3>
-              <p class="product-description">سويت بانتس مريح وعصري، مثالي للرياضة أو الاسترخاء</p>
+              <h3 class="text-lg font-semibold mb-2">Slim Fit Sweatpants</h3>
+              <p class="product-description">Comfortable and modern sweatpants, perfect for sports or lounging</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">250 جنيه</span>
+                <span class="text-xl font-bold">250 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -807,7 +864,7 @@
                data-images='["https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768", "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"]'
                data-color-images='{"بيج": "https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768", "أخضر": "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "بني": "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"}'>
             <div class="relative">
-              <img src="https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768" alt="هودي بقصة واسعة" class="w-full h-64 object-cover product-image" />
+              <img src="https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768" alt="Oversized Hoodie" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -815,12 +872,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">هودي بقصة واسعة</h3>
-              <p class="product-description">هودي عصري بقصة واسعة لمظهر شبابي ومريح</p>
+              <h3 class="text-lg font-semibold mb-2">Oversized Hoodie</h3>
+              <p class="product-description">Trendy oversized hoodie for a youthful and comfortable look</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">380 جنيه</span>
+                <span class="text-xl font-bold">380 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -836,7 +893,7 @@
                data-images='["https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg", "https://robeen-collection.com/upload/items/1706214839-43.jpg", "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"]'
                data-color-images='{"أسود": "https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg", "زيتي": "https://robeen-collection.com/upload/items/1706214839-43.jpg", "بيج": "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"}'>
             <div class="relative">
-              <img src="https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg" alt="سويت بانتس كارغو" class="w-full h-64 object-cover product-image" />
+              <img src="https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg" alt="Cargo Sweatpants" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -844,12 +901,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">سويت بانتس كارغو</h3>
-              <p class="product-description">سويت بانتس بتصميم كارغو عملي وأنيق</p>
+              <h3 class="text-lg font-semibold mb-2">Cargo Sweatpants</h3>
+              <p class="product-description">Practical and stylish cargo sweatpants</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">320 جنيه</span>
+                <span class="text-xl font-bold">320 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -865,7 +922,7 @@
                data-images='["https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"]'
                data-color-images='{"أسود": "https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "رمادي": "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "أبيض": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"}'>
             <div class="relative">
-              <img src="https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg" alt="هودي بسحاب" class="w-full h-64 object-cover product-image" />
+              <img src="https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg" alt="Zip-Up Hoodie" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -873,12 +930,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">هودي بسحاب</h3>
-              <p class="product-description">هودي عملي بسحاب كامل، سهل الارتداء والخلع</p>
+              <h3 class="text-lg font-semibold mb-2">Zip-Up Hoodie</h3>
+              <p class="product-description">Practical full-zip hoodie, easy to wear and take off</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">350 جنيه</span>
+                <span class="text-xl font-bold">350 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -894,7 +951,7 @@
                data-images='["https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"]'
                data-color-images='{"أسود": "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "رمادي": "https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "كحلي": "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"}'>
             <div class="relative">
-              <img src="https://m.media-amazon.com/images/I/614zok5ahvL.jpg" alt="طقم هودي وسويت بانتس" class="w-full h-64 object-cover product-image" />
+              <img src="https://m.media-amazon.com/images/I/614zok5ahvL.jpg" alt="Hoodie & Sweatpants Set" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -902,12 +959,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">طقم هودي وسويت بانتس</h3>
-              <p class="product-description">طقم متناسق لمظهر شبابي كامل ومريح</p>
+              <h3 class="text-lg font-semibold mb-2">Hoodie & Sweatpants Set</h3>
+              <p class="product-description">Coordinated set for a complete and comfortable youthful look</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">600 جنيه</span>
+                <span class="text-xl font-bold">600 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -923,7 +980,7 @@
                data-images='["https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s", "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"]'
                data-color-images='{"أسود": "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "زيتي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s", "رمادي": "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"}'>
             <div class="relative">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s" alt="جاكيت خفيف" class="w-full h-64 object-cover product-image" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s" alt="Lightweight Jacket" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -931,12 +988,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">جاكيت خفيف</h3>
-              <p class="product-description">جاكيت خفيف وعصري، مثالي للأيام المعتدلة</p>
+              <h3 class="text-lg font-semibold mb-2">Lightweight Jacket</h3>
+              <p class="product-description">Light and trendy jacket, perfect for mild days</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">450 جنيه</span>
+                <span class="text-xl font-bold">450 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -952,7 +1009,7 @@
                data-images='["https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "https://media.alshaya.com/adobe/assets/urn:aaid:aem:76e45537-a683-4a14-af96-81b3f542ded6/as/EID-258442c58379228d25a5870f6202898ed5cb4327.jpg?preferwebp=true&width=768", "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"]'
                data-color-images='{"أسود": "https://media.alshaya.com/adobe/assets/urn:aaid:aem:76e45537-a683-4a14-af96-81b3f542ded6/as/EID-258442c58379228d25a5870f6202898ed5cb4327.jpg?preferwebp=true&width=768", "أبيض": "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "أزرق": "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"}'>
             <div class="relative">
-              <img src="https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg" alt="هودي بطبعة" class="w-full h-64 object-cover product-image" />
+              <img src="https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg" alt="Graphic Hoodie" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -960,12 +1017,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">هودي بطبعة</h3>
-              <p class="product-description">هودي مميز بطبعة عصرية، يضيف لمسة فريدة لإطلالتك</p>
+              <h3 class="text-lg font-semibold mb-2">Graphic Hoodie</h3>
+              <p class="product-description">Unique hoodie with a trendy graphic, adds a unique touch to your look</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">400 جنيه</span>
+                <span class="text-xl font-bold">400 EGP</span>
                 <button class="bg-gray-400 text-white px-4 py-2 rounded-full cursor-not-allowed" disabled>
-                  غير متوفر
+                  Out of Stock
                 </button>
               </div>
             </div>
@@ -981,7 +1038,7 @@
                data-images='["https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg", "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true"]'
                data-color-images='{"أسود": "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "رمادي": "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "بني": "https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg"}'>
             <div class="relative">
-              <img src="https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg" alt="سويت بانتس صوف" class="w-full h-64 object-cover product-image" />
+              <img src="https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg" alt="Fleece Sweatpants" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
                 <svg class="w-5 h-5" fill="none", stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -989,12 +1046,12 @@
               </button>
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-2">سويت بانتس صوف</h3>
-              <p class="product-description">سويت بانتس دافئ ومريح من الصوف، مثالي للشتاء</p>
+              <h3 class="text-lg font-semibold mb-2">Fleece Sweatpants</h3>
+              <p class="product-description">Warm and comfortable fleece sweatpants, perfect for winter</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-blue-400">300 جنيه</span>
+                <span class="text-xl font-bold">300 EGP</span>
                 <button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart">
-                  أضف للسلة
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -1003,7 +1060,7 @@
         
         <div class="text-center mt-12">
           <button id="loadMoreBtn" class="bg-blue-300 text-white px-8 py-3 rounded-full hover:bg-blue-400 transition-colors animate-on-scroll">
-            عرض المزيد من المنتجات
+            Load More Products
           </button>
         </div>
       </div>
@@ -1013,35 +1070,35 @@
     <section class="py-16 gradient-blue">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-blue-400 mb-4 animate-on-scroll">مجموعة مختارة</h2>
-          <p class="text-blue-300 text-lg animate-on-scroll">أحدث صيحات الملابس الشبابية لهذا الموسم</p>
+          <h2 class="text-4xl font-bold text-blue-400 mb-4 animate-on-scroll">Featured Collection</h2>
+          <p class="text-blue-300 text-lg animate-on-scroll">The latest trends in youth apparel this season</p>
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
           <div class="bg-white rounded-xl p-6 text-center card-hover animate-on-scroll">
-            <img src="https://image.made-in-china.com/2f0j00jVdqkcNaGJbl/Fashion-Custom-Logo-Hoodie-Men-Sweatshirts-Oversized-USA-Size-Blank-Xxxxl-Hoodies.webp" alt="مجموعة هوديز" class="w-full rounded-lg mb-4 animate-scale-in" />
-            <h3 class="text-lg font-semibold text-blue-400 mb-2">مجموعة هوديز</h3>
-            <p class="text-black-300 mb-4">هوديز بتصاميم وألوان متنوعة تناسب جميع الأذواق</p>
+            <img src="https://image.made-in-china.com/2f0j00jVdqkcNaGJbl/Fashion-Custom-Logo-Hoodie-Men-Sweatshirts-Oversized-USA-Size-Blank-Xxxxl-Hoodies.webp" alt="Hoodie Collection" class="w-full rounded-lg mb-4 animate-scale-in" />
+            <h3 class="text-lg font-semibold text-blue-400 mb-2">Hoodie Collection</h3>
+            <p class="text-black-300 mb-4">Hoodies with various designs and colors to suit all tastes</p>
             <button class="bg-blue-300 text-white px-6 py-2 rounded-full hover:bg-blue-400 transition-colors">
-              تسوق الآن
+              Shop Now
             </button>
           </div>
           
           <div class="bg-white rounded-xl p-6 text-center card-hover animate-on-scroll">
-            <img src="https://api.cezma.cloud/storage/thumbnails/products/web/1720305792000.jpg" alt="مجموعة سويت بانتس" class="w-full rounded-lg mb-4 animate-scale-in" />
-            <h3 class="text-lg font-semibold text-blue-400 mb-2">مجموعة سويت بانتس</h3>
-            <p class="text-black-300 mb-4">سويت بانتس مريحة وعصرية لمظهر شبابي متكامل</p>
+            <img src="https://api.cezma.cloud/storage/thumbnails/products/web/1720305792000.jpg" alt="Sweatpants Collection" class="w-full rounded-lg mb-4 animate-scale-in" />
+            <h3 class="text-lg font-semibold text-blue-400 mb-2">Sweatpants Collection</h3>
+            <p class="text-black-300 mb-4">Comfortable and trendy sweatpants for a complete youthful look</p>
             <button class="bg-blue-300 text-white px-6 py-2 rounded-full hover:bg-blue-400 transition-colors">
-              تسوق الآن
+              Shop Now
             </button>
           </div>
           
           <div class="bg-white rounded-xl p-6 text-center card-hover animate-on-scroll">
-            <img src="https://echo-moda.com/wp-content/uploads/%D9%84%D9%84%D8%B9%D9%8A%D8%AF-%D8%AA%D9%86%D8%B3%D9%8A%D9%82-25-%D8%B7%D9%82%D9%85-%D9%85%D9%84%D8%A7%D8%A8%D8%B3-%D8%B4%D8%A8%D8%A7%D8%A8%D9%8A-%D8%B1%D8%A8%D9%8A%D8%B9-%D9%88%D8%B5%D9%8A%D9%81-%D8%A7%D9%84%D9%85%D9%88%D8%B3%D9%85-scaled.jpg" alt="أطقم متناسقة" class="w-full rounded-lg mb-4 animate-scale-in" />
-            <h3 class="text-lg font-semibold text-blue-400 mb-2">أطقم متناسقة</h3>
-            <p class="text-black-300 mb-4">أطقم هوديز وسويت بانتس جاهزة لمظهر أنيق</p>
+            <img src="https://echo-moda.com/wp-content/uploads/%D9%84%D9%84%D8%B9%D9%8A%D8%AF-%D8%AA%D9%86%D8%B3%D9%8A%D9%82-25-%D8%B7%D9%82%D9%85-%D9%85%D9%84%D8%A7%D8%A8%D8%B3-%D8%B4%D8%A8%D8%A7%D8%A8%D9%8A-%D8%B1%D8%A8%D9%8A%D8%B9-%D9%88%D8%B5%D9%8A%D9%81-%D8%A7%D9%84%D9%85%D9%88%D8%B3%D9%85-scaled.jpg" alt="Coordinated Sets" class="w-full rounded-lg mb-4 animate-scale-in" />
+            <h3 class="text-lg font-semibold text-blue-400 mb-2">Coordinated Sets</h3>
+            <p class="text-black-300 mb-4">Hoodie and sweatpants sets ready for a stylish look</p>
             <button class="bg-blue-300 text-white px-6 py-2 rounded-full hover:bg-blue-400 transition-colors">
-              تسوق الآن
+              Shop Now
             </button>
           </div>
         </div>
@@ -1051,11 +1108,11 @@
     <!-- Newsletter -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-blue-400 mb-4 animate-on-scroll">تواصل معنا</h2>
-        <p class="text-blue-300 mb-8 animate-on-scroll">احصل على آخر العروض والمنتجات الجديدة</p>
+        <h2 class="text-3xl font-bold text-black-400 mb-4 animate-on-scroll">Contact Us</h2>
+        <p class="text-blacl-300 mb-8 animate-on-scroll">Get the latest offers and new products</p>
         <div class="max-w-md mx-auto flex justify-center animate-on-scroll">
           <button class="bg-blue-300 text-white px-8 py-3 rounded-full hover:bg-blue-400 transition-colors">
-             إرسال
+             Send
           </button>
         </div>
       </div>
@@ -1067,8 +1124,8 @@
     <section class="py-16">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-blue-400 mb-4">المفضلة</h2>
-          <p class="text-blue-300 text-lg">المنتجات التي أحببتها</p>
+          <h2 class="text-4xl font-bold text-blue-400 mb-4">Wishlist</h2>
+          <p class="text-blue-300 text-lg">Products you loved</p>
         </div>
         
         <div id="wishlistGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -1079,10 +1136,10 @@
           <svg class="w-24 h-24 mx-auto text-blue-200 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
           </svg>
-          <h3 class="text-2xl font-bold text-blue-300 mb-4">قائمة المفضلة فارغة</h3>
-          <p class="text-blue-200 mb-6">لم تقم بإضافة أي منتجات إلى المفضلة بعد</p>
+          <h3 class="text-2xl font-bold text-blue-300 mb-4">Your Wishlist is Empty</h3>
+          <p class="text-blue-200 mb-6">You haven't added any products to your wishlist yet</p>
           <button onclick="showPage('home')" class="bg-blue-300 text-white px-8 py-3 rounded-full hover:bg-blue-400 transition-colors">
-            تسوق الآن
+            Shop Now
           </button>
         </div>
       </div>
@@ -1094,7 +1151,7 @@
     <div class="flex items-center justify-center min-h-screen px-4">
       <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 modal-content">
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-blue-400">سلة التسوق</h2>
+          <h2 class="text-2xl font-bold text-blue-400">Shopping Cart</h2>
           <button id="closeCart" class="text-blue-300 hover:text-blue-400">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1108,11 +1165,11 @@
         
         <div class="border-t border-blue-100 pt-4">
           <div class="flex justify-between items-center mb-4">
-            <span class="text-lg font-semibold text-blue-400">المجموع:</span>
-            <span id="cartTotal" class="text-xl font-bold text-blue-400">0 جنيه</span>
+            <span class="text-lg font-semibold text-blue-400">Total:</span>
+            <span id="cartTotal" class="text-xl font-bold text-blue-400">0 EGP</span>
           </div>
           <button id="proceedToCheckoutBtn" class="w-full bg-blue-300 text-white py-3 rounded-full hover:bg-blue-400 transition-colors">
-            إتمام الشراء
+            Proceed to Checkout
           </button>
         </div>
       </div>
@@ -1124,7 +1181,7 @@
     <div class="flex items-center justify-center min-h-screen px-4">
       <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-6 modal-content">
         <div class="flex justify-between items-center mb-6">
-          <h2 id="modalProductName" class="text-2xl font-bold text-blue-400"></h2>
+          <h2 id="modalProductName" class="text-2xl font-bold"></h2>
           <button id="closeProductDetail" class="text-blue-300 hover:text-blue-400">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1136,7 +1193,7 @@
           <div>
             <!-- Image Gallery -->
             <div class="product-gallery relative">
-              <img id="modalProductImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&amp;s" alt="" class="main-product-image" />
+              <img id="modalProductImage" src="" alt="" class="main-product-image" />
               <div class="gallery-controls">
                 <button id="prevImageBtn" class="gallery-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -1158,33 +1215,33 @@
           </div>
           <div>
             <div class="mb-4">
-              <span class="text-lg font-semibold text-blue-400">السعر:</span>
-              <span id="modalProductPrice" class="text-xl font-bold text-blue-400 mr-2"></span>
+              <span class="text-lg font-semibold text-blue-400">Price:</span>
+              <span id="modalProductPrice" class="text-xl font-bold mr-2"></span>
             </div>
             <div class="mb-4">
-              <span class="text-lg font-semibold text-blue-400">الحالة:</span>
+              <span class="text-lg font-semibold text-blue-400">Availability:</span>
               <span id="modalProductAvailability" class="text-lg font-bold"></span>
             </div>
 
             <div id="modalProductSizes" class="mb-4">
-              <p class="text-lg font-semibold text-blue-400 mb-2">المقاسات:</p>
+              <p class="text-lg font-semibold text-blue-400 mb-2">Sizes:</p>
               <div id="sizesContainer" class="flex flex-wrap gap-2">
                 <!-- Sizes will be injected here -->
               </div>
             </div>
 
             <div id="modalProductColors" class="mb-6">
-              <p class="text-lg font-semibold text-blue-400 mb-2">الألوان:</p>
+              <p class="text-lg font-semibold text-blue-400 mb-2">Colors:</p>
               <div id="colorsContainer" class="flex flex-wrap gap-2">
                 <!-- Colors will be injected here -->
               </div>
             </div>
 
             <button id="modalAddToCartBtn" class="w-full bg-blue-300 text-white py-3 rounded-full hover:bg-blue-400 transition-colors mb-3">
-              أضف للسلة
+              Add to Cart
             </button>
             <button id="modalRequestOrderBtn" class="w-full bg-gray-500 text-white py-3 rounded-full hover:bg-gray-600 transition-colors">
-              طلب المنتج (غير متوفر حالياً)
+              Request Product (Currently Unavailable)
             </button>
           </div>
         </div>
@@ -1250,8 +1307,8 @@
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">هوديز</h3>
-          <p class="text-blue-300 mb-4">وجهتك الأولى للملابس الشبابية العصرية والأنيقة</p>
+          <h3 class="text-2xl font-bold text-blue-400 mb-4">Hoodies</h3>
+          <p class="text-blue-300 mb-4">Your first destination for modern and stylish youth apparel</p>
           <div class="flex space-x-4 space-x-reverse">
             <a href="#" class="text-blue-300 hover:text-blue-400">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1272,38 +1329,38 @@
         </div>
         
         <div>
-          <h4 class="text-lg font-semibold text-blue-400 mb-4">روابط سريعة</h4>
+          <h4 class="text-lg font-semibold text-blue-400 mb-4">Quick Links</h4>
           <ul class="space-y-2 text-blue-300">
-            <li><a href="#" class="hover:text-blue-400 transition-colors">الرئيسية</a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors">المنتجات</a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors">عنا</a></li>
-            <li><a href="#" class="hover:text-blue-400 transition-colors">التواصل</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition-colors">Products</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition-colors">Contact</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="text-lg font-semibold text-blue-400 mb-4">الفئات</h4>
+          <h4 class="text-lg font-semibold text-blue-400 mb-4">Categories</h4>
           <ul class="space-y-2 text-blue-300">
-            <li>هوديز</li>
-            <li>سويت بانتس</li>
-            <li>أطقم</li>
-            <li>جاكيتات</li>
+            <li>Hoodies</li>
+            <li>Sweatpants</li>
+            <li>Sets</li>
+            <li>Jackets</li>
           </ul>
         </div>
         
         <div>
-          <h4 class="text-lg font-semibold text-blue-400 mb-4">خدمة العملاء</h4>
+          <h4 class="text-lg font-semibold text-blue-400 mb-4">Customer Service</h4>
           <ul class="space-y-2 text-blue-300">
-            <li>الدعم الفني</li>
-            <li>سياسة الإرجاع</li>
-            <li>الشحن والتوصيل</li>
-            <li>الدفع الآمن</li>
+            <li>Support</li>
+            <li>Return Policy</li>
+            <li>Shipping & Delivery</li>
+            <li>Secure Payment</li>
           </ul>
         </div>
       </div>
       
       <div class="border-t border-blue-100 mt-8 pt-8 text-center text-blue-300">
-        <p>© 2024 متجر هوديز. جميع الحقوق محفوظة.</p>
+        <p>© 2024 Hoodies Store. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1372,11 +1429,11 @@
             const requiresColor = currentProduct.colors.length > 0 && currentProduct.colors[0] !== 'متعدد';
 
             if (requiresSize && !selectedSize) {
-                showNotification('يرجى اختيار المقاس أولاً.');
+                showNotification('Please select a size first.');
                 return;
             }
             if (requiresColor && !selectedColor) {
-                showNotification('يرجى اختيار اللون أولاً.');
+                showNotification('Please select a color first.');
                 return;
             }
 
@@ -1395,17 +1452,17 @@
             cartCount++;
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartDisplay();
-            showNotification('تم إضافة المنتج إلى السلة', true); // Changed to green notification
+            showNotification('Product added to cart successfully!', true); // Changed to green notification
             closeProductDetailModal();
         } else {
-            showNotification('المنتج غير متوفر حالياً.');
+            showNotification('Product is currently unavailable.');
         }
       });
 
       // Request order from product detail modal
       document.getElementById('modalRequestOrderBtn').addEventListener('click', function() {
         if (currentProduct) {
-          showNotification(`تم إرسال طلب لمنتج "${currentProduct.name}". سنتواصل معك قريباً!`);
+          showNotification(`Request sent for "${currentProduct.name}". We will contact you soon!`);
           closeProductDetailModal();
         }
       });
@@ -1419,16 +1476,16 @@
 
       document.getElementById('closeCart').addEventListener('click', function() {
         document.getElementById('cartModal').classList.add('hidden');
-        // Go back in history if the current state is the cart modal
+        // Remove the modal state from history if it's the current state
         if (history.state && history.state.modal === 'cart') {
-            history.back();
+            history.back(); // Go back to the previous state
         }
       });
 
       // Proceed to Checkout button in Cart Modal
       document.getElementById('proceedToCheckoutBtn').addEventListener('click', function() {
         if (cart.length === 0) {
-            showNotification('سلة التسوق فارغة. يرجى إضافة منتجات أولاً.');
+            showNotification('Your cart is empty. Please add products first.');
             return;
         }
         document.getElementById('cartModal').classList.add('hidden'); // Hide cart modal
@@ -1502,12 +1559,12 @@
 
       // Newsletter subscription
       document.querySelector('section:nth-last-child(2) button').addEventListener('click', function() {
-        showNotification('تم اشتراكك بنجاح في النشرة الإخبارية');
+        showNotification('You have successfully subscribed to the newsletter!');
       });
       
       // Load more products
       document.getElementById('loadMoreBtn').addEventListener('click', function() {
-        showNotification('سيتم إضافة المزيد من المنتجات قريباً');
+        showNotification('More products will be added soon!');
       });
 
       // Animation on scroll functionality
@@ -1563,8 +1620,11 @@
             cartModal.classList.add('hidden');
             history.pushState({ modal: 'cart' }, '', '#cart'); // Re-add state
         } else if (checkoutPage.classList.contains('active')) {
-            // If on checkout page, go back to home
-            showPage('home');
+            // If on checkout page, go back to cart modal
+            document.getElementById('cartModal').classList.remove('hidden');
+            showPage('home'); // Hide checkout page by showing home
+            // We need to manually push the cart modal state back to history
+            history.pushState({ modal: 'cart' }, '', '#cart');
         } else if (event.state && event.state.page) {
             // If there's a state, navigate to that page
             showPage(event.state.page);
@@ -1616,7 +1676,7 @@
           const productAvailable = productCard.dataset.available === 'true';
 
           if (!productAvailable) {
-            showNotification('هذا المنتج غير متوفر حالياً.');
+            showNotification('This product is currently unavailable.');
             return;
           }
           
@@ -1666,7 +1726,7 @@
         button.classList.remove('cart-badge');
       }, 500);
       
-      showNotification('تم إضافة المنتج إلى السلة', true); // Changed to green notification
+      showNotification('Product added to cart successfully!', true); // Changed to green notification
     }
 
     // Open Product Detail Modal
@@ -1701,9 +1761,9 @@
 
       document.getElementById('modalProductName').textContent = currentProduct.name;
       document.getElementById('modalProductDescription').textContent = currentProduct.description;
-      document.getElementById('modalProductPrice').textContent = `${currentProduct.price} جنيه`;
+      document.getElementById('modalProductPrice').textContent = `${currentProduct.price} EGP`;
 
-      const availabilityText = currentProduct.available && currentProduct.quantity > 0 ? 'متوفر' : 'غير متوفر';
+      const availabilityText = currentProduct.available && currentProduct.quantity > 0 ? 'Available' : 'Unavailable';
       const availabilityColor = currentProduct.available && currentProduct.quantity > 0 ? 'text-green-500' : 'text-red-500';
       document.getElementById('modalProductAvailability').textContent = availabilityText;
       document.getElementById('modalProductAvailability').className = `text-lg font-bold ${availabilityColor}`;
@@ -1882,17 +1942,17 @@
 
       if (currentProduct.available && currentProduct.quantity > 0) {
         let disableAddToCart = false;
-        let buttonText = 'أضف للسلة';
+        let buttonText = 'Add to Cart';
 
         const requiresSizeSelection = currentProduct.sizes.length > 0 && currentProduct.sizes[0] !== 'مقاس واحد';
         const requiresColorSelection = currentProduct.colors.length > 0 && currentProduct.colors[0] !== 'متعدد';
 
         if (requiresSizeSelection && !selectedSize) {
             disableAddToCart = true;
-            buttonText = 'اختر المقاس أولاً';
+            buttonText = 'Select Size First';
         } else if (requiresColorSelection && !selectedColor) {
             disableAddToCart = true;
-            buttonText = 'اختر اللون أولاً';
+            buttonText = 'Select Color First';
         }
         
         addToCartBtn.disabled = disableAddToCart;
@@ -1909,7 +1969,7 @@
         addToCartBtn.disabled = true;
         addToCartBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
         addToCartBtn.classList.remove('bg-blue-300', 'hover:bg-blue-400');
-        addToCartBtn.textContent = 'غير متوفر';
+        addToCartBtn.textContent = 'Out of Stock';
         requestOrderBtn.style.display = 'block';
       }
     }
@@ -1959,11 +2019,11 @@
       if (existingIndex > -1) {
         wishlist.splice(existingIndex, 1);
         heartIcon.classList.remove('liked');
-        showNotification('تم حذف المنتج من المفضلة', false, true); // Red for removal
+        showNotification('Product removed from wishlist.', false, true); // Red for removal
       } else {
         wishlist.push(product);
         heartIcon.classList.add('liked');
-        showNotification('تم إضافة المنتج إلى المفضلة', true); // Green for addition
+        showNotification('Product added to wishlist!', true); // Green for addition
       }
       
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -2004,8 +2064,8 @@
       const cartTotal = document.getElementById('cartTotal');
       
       if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="text-blue-300 text-center">السلة فارغة</p>';
-        cartTotal.textContent = '0 جنيه';
+        cartItemsContainer.innerHTML = '<p class="text-blue-300 text-center">Your cart is empty</p>';
+        cartTotal.textContent = '0 EGP';
         document.getElementById('proceedToCheckoutBtn').disabled = true;
         document.getElementById('proceedToCheckoutBtn').classList.add('bg-gray-400', 'cursor-not-allowed');
         document.getElementById('proceedToCheckoutBtn').classList.remove('bg-blue-300', 'hover:bg-blue-400');
@@ -2024,10 +2084,10 @@
           <div class="flex items-center space-x-4 space-x-reverse">
             <img src="${item.colorImage || item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded" />
             <div>
-              <h4 class="font-semibold text-blue-400">${item.name}</h4>
-              <p class="text-blue-300">${item.price} جنيه</p>
-              ${item.size && item.size !== 'مقاس واحد' ? `<p class="text-blue-300 text-xs">المقاس: ${item.size}</p>` : ''}
-              ${item.color && item.color !== 'متعدد' ? `<p class="text-blue-300 text-xs">اللون: ${item.color}</p>` : ''}
+              <h4 class="font-semibold">${item.name}</h4>
+              <p>${item.price} EGP</p>
+              ${item.size && item.size !== 'مقاس واحد' ? `<p class="text-xs">Size: ${item.size}</p>` : ''}
+              ${item.color && item.color !== 'متعدد' ? `<p class="text-xs">Color: ${item.color}</p>` : ''}
             </div>
           </div>
           <button onclick="removeFromCart(${item.id})" class="text-blue-300 hover:text-blue-400">
@@ -2039,7 +2099,7 @@
         cartItemsContainer.appendChild(cartItem);
       });
       
-      cartTotal.textContent = `${total} جنيه`;
+      cartTotal.textContent = `${total} EGP`;
       document.getElementById('proceedToCheckoutBtn').disabled = false;
       document.getElementById('proceedToCheckoutBtn').classList.remove('bg-gray-400', 'cursor-not-allowed');
       document.getElementById('proceedToCheckoutBtn').classList.add('bg-blue-300', 'hover:bg-blue-400');
@@ -2076,9 +2136,9 @@
             <h3 class="text-lg font-semibold text-blue-400 mb-2">${item.name}</h3>
             <p class="product-description">${item.description}</p>
             <div class="flex justify-between items-center">
-              <span class="text-xl font-bold text-blue-400">${item.price} جنيه</span>
+              <span class="text-xl font-bold text-blue-400">${item.price} EGP</span>
               <button onclick="addToCartFromWishlist('${item.id}')" class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors">
-                أضف للسلة
+                Add to Cart
               </button>
             </div>
           </div>
@@ -2094,7 +2154,7 @@
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartDisplay();
       populateCheckoutSummary(); // Update checkout summary if on that page
-      showNotification('تم حذف المنتج من السلة', false, true); // Red for removal
+      showNotification('Product removed from cart.', false, true); // Red for removal
     }
 
     // Remove from wishlist
@@ -2104,7 +2164,7 @@
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
       updateWishlistDisplay();
       updateWishlistPage();
-      showNotification('تم حذف المنتج من المفضلة', false, true); // Red for removal
+      showNotification('Product removed from wishlist.', false, true); // Red for removal
     }
 
     // Add to cart from wishlist
@@ -2121,7 +2181,7 @@
         cartCount++;
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartDisplay();
-        showNotification('تم إضافة المنتج إلى السلة', true); // Changed to green notification
+        showNotification('Product added to cart successfully!', true); // Changed to green notification
       }
     }
 
@@ -2178,21 +2238,21 @@
       if (isSuccess) {
         notificationItem.innerHTML = `
           <div class="main-message">${message}</div>
-          <div class="sub-message">شكراً لتسوقك معنا!</div>
+          <div class="sub-message">Thank you for shopping with us!</div>
         `;
         // Set background color to green for success messages
-        notificationItem.style.backgroundColor = '#10B981'; 
+        notificationItem.style.backgroundColor = '#28a745'; 
       } else if (isError) {
         notificationItem.classList.add('error'); // Add class for error messages
         notificationItem.textContent = message;
         // Set background color to red for error messages
-        notificationItem.style.backgroundColor = '#EF4444';
+        notificationItem.style.backgroundColor = '#dc3545';
       }
       else {
         notificationItem.classList.add('regular'); // Add class for regular messages
         notificationItem.textContent = message;
-        // Set background color to blue for regular messages (already defined in CSS, but explicit here for clarity)
-        notificationItem.style.backgroundColor = '#2196F3'; 
+        // Set background color to dark gray for regular messages
+        notificationItem.style.backgroundColor = '#333333'; 
       }
       
       notificationContainer.appendChild(notificationItem);
@@ -2202,14 +2262,20 @@
         notificationItem.classList.add('show');
       }, 10);
 
-      // Hide and remove after 1 second
+      // Hide and remove after 1 second for specific messages, 4 seconds for others
+      const duration = (message === 'Product added to wishlist!' || 
+                        message === 'Product removed from wishlist.' ||
+                        message === 'Product removed from cart.' ||
+                        message === 'Product added to cart successfully!' ||
+                        message === 'تم تأكيد طلبك بنجاح! سنتواصل معك قريباً.') ? 1000 : 4000;
+
       setTimeout(() => {
         notificationItem.classList.remove('show');
         notificationItem.classList.add('hide');
         notificationItem.addEventListener('transitionend', () => {
           notificationItem.remove();
         }, { once: true });
-      }, 1000); // Changed to 1000 milliseconds (1 second)
+      }, duration);
     }
 
     // ** Function to send message to Telegram **
