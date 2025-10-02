@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hoodies</title>
+  <title>مريام</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
   <!-- Intersection Observer Polyfill for wider browser support -->
-  <script src="https://cdnjs.cloudflare.com/polyfill/v2/polyfill.min.js?features=IntersectionObserver"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/polyfill/v2/polyfill.min.js?features=IntersectionObserver"></script>
   <!-- Three.js Library (kept for potential future use, but not used in hero section) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
   <style>
@@ -221,8 +221,8 @@
 
     .store-title {
       font-family: 'Reem Kufi', sans-serif;
-      font-weight: 700;
-      font-size: 2.5rem;
+      font-weight: 900; /* Made bolder */
+      font-size: 3rem; /* Made larger */
       color: #fff;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
@@ -940,6 +940,96 @@
     .animated-button {
       animation: slideInRight 0.8s ease-out, glow-black 1.5s ease-in-out infinite; /* Default to black glow */
     }
+
+    /* Admin Panel Specific Styles */
+    #adminPanel {
+      padding-top: 80px;
+    }
+    .admin-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .admin-title {
+      color: #222222;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .admin-form-group {
+      margin-bottom: 1rem;
+    }
+    .admin-form-label {
+      display: block;
+      color: #222222;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .admin-form-input,
+    .admin-form-textarea,
+    .admin-form-select {
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 0.75rem;
+      width: 100%;
+      background-color: #fff;
+      color: #000;
+      transition: all 0.3s ease;
+    }
+    .admin-form-input:focus,
+    .admin-form-textarea:focus,
+    .admin-form-select:focus {
+      border-color: #222222;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+    .admin-btn {
+      background-color: #222222;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .admin-btn:hover {
+      background-color: #000;
+      transform: translateY(-2px);
+    }
+    .admin-btn-danger {
+      background-color: #dc3545;
+    }
+    .admin-btn-danger:hover {
+      background-color: #c82333;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    .admin-table th,
+    .admin-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: right;
+    }
+    .admin-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      color: #333;
+    }
+    .admin-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .admin-table tr:hover {
+      background-color: #f1f1f1;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-white min-h-screen">
@@ -948,7 +1038,7 @@
   <nav class="fixed top-0 w-full z-50 navbar-glass" id="navbar">
     <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold cursor-pointer store-title" onclick="showPage('home')">Hoodies</div>
+        <div class="text-2xl font-bold cursor-pointer store-title" onclick="showPage('home')">مريام</div>
         
         <!-- Search Bar -->
         <div class="hidden md:flex flex-1 max-w-md mx-8">
@@ -1058,6 +1148,8 @@
     </section>
 
     <!-- Category Filter -->
+
+    <!-- Category Filter -->
     <section class="py-8 bg-white">
       <div class="container mx-auto px-6">
         <div class="flex flex-wrap justify-center gap-4 animate-on-scroll">
@@ -1091,11 +1183,13 @@
         <div id="productsGrid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <!-- Product 1: Basic Hoodie -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="1"
                data-category="hoodies"
                data-sizes="S,M,L,XL,XXL"
                data-colors="أسود,رمادي,أزرق,أبيض"
                data-available="true"
                data-quantity="20"
+               data-main-image="https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg"
                data-images='["https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&s", "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"]'
                data-color-images='{"أسود": "https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "رمادي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&amp;s", "أزرق": "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "أبيض": "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"}'>
             <div class="relative">
@@ -1120,11 +1214,13 @@
 
           <!-- Product 2: Slim Fit Sweatpants -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="2"
                data-category="sweatpants"
                data-sizes="S,M,L,XL"
                data-colors="أسود,رمادي,كحلي"
                data-available="true"
                data-quantity="50"
+               data-main-image="https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg"
                data-images='["https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"]'
                data-color-images='{"أسود": "https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "رمادي": "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "كحلي": "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"}'>
             <div class="relative">
@@ -1149,12 +1245,14 @@
 
           <!-- Product 3: Oversized Hoodie -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="3"
                data-category="hoodies"
                data-sizes="M,L,XL,XXL"
                data-colors="بيج,أخضر,بني"
                data-available="true"
                data-quantity="30"
-               data-images='["https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768", "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"]'
+               data-main-image="https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768"
+               data-images='["https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768", "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"]'
                data-color-images='{"بيج": "https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768", "أخضر": "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "بني": "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"}'>
             <div class="relative">
               <img src="https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&amp;width=768" alt="Oversized Hoodie" class="w-full h-64 object-cover product-image" />
@@ -1178,11 +1276,13 @@
 
           <!-- Product 4: Cargo Sweatpants -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="4"
                data-category="sweatpants"
                data-sizes="S,M,L,XL"
                data-colors="أسود,زيتي,بيج"
                data-available="true"
                data-quantity="40"
+               data-main-image="https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg"
                data-images='["https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg", "https://robeen-collection.com/upload/items/1706214839-43.jpg", "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"]'
                data-color-images='{"أسود": "https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_04_03.jpg", "زيتي": "https://robeen-collection.com/upload/items/1706214839-43.jpg", "بيج": "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"}'>
             <div class="relative">
@@ -1207,11 +1307,13 @@
 
           <!-- Product 5: Zip-Up Hoodie -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="5"
                data-category="hoodies"
                data-sizes="S,M,L,XL,XXL"
                data-colors="أسود,رمادي,أبيض"
                data-available="true"
                data-quantity="25"
+               data-main-image="https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg"
                data-images='["https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"]'
                data-color-images='{"أسود": "https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "رمادي": "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "أبيض": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"}'>
             <div class="relative">
@@ -1236,11 +1338,13 @@
 
           <!-- Product 7: Hoodie & Sweatpants Set -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="6"
                data-category="sets"
                data-sizes="S,M,L,XL"
                data-colors="أسود,رمادي,كحلي"
                data-available="true"
                data-quantity="15"
+               data-main-image="https://m.media-amazon.com/images/I/614zok5ahvL.jpg"
                data-images='["https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"]'
                data-color-images='{"أسود": "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "رمادي": "https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "كحلي": "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"}'>
             <div class="relative">
@@ -1265,11 +1369,13 @@
 
           <!-- Product 8: Lightweight Jacket -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="7"
                data-category="jackets"
                data-sizes="M,L,XL"
                data-colors="أسود,زيتي,رمادي"
                data-available="true"
                data-quantity="10"
+               data-main-image="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true"
                data-images='["https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s", "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"]'
                data-color-images='{"أسود": "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "زيتي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYHDvtPmHJIIS5-MMv6bQg&s", "رمادي": "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"}'>
             <div class="relative">
@@ -1294,11 +1400,13 @@
 
           <!-- Product 9: Graphic Hoodie -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="8"
                data-category="hoodies"
                data-sizes="S,M,L,XL"
                data-colors="أسود,أبيض,أزرق"
                data-available="false"
                data-quantity="0"
+               data-main-image="https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg"
                data-images='["https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "https://media.alshaya.com/adobe/assets/urn:aaid:aem:76e45537-a683-4a14-af96-81b3f542ded6/as/EID-258442c58379228d25a5870f6202898ed5cb4327.jpg?preferwebp=true&width=768", "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"]'
                data-color-images='{"أسود": "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "أبيض": "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "أزرق": "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"}'>
             <div class="relative">
@@ -1323,13 +1431,15 @@
 
           <!-- Product 10: Fleece Sweatpants -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll" 
+               data-id="9"
                data-category="sweatpants"
                data-sizes="M,L,XL,XXL"
                data-colors="أسود,رمادي,بني"
                data-available="true"
                data-quantity="35"
+               data-main-image="https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg"
                data-images='["https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg", "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true"]'
-               data-color-images='{"أسود": "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "رمادي": "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "بني": "https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg"}'>
+               data-color-images='{"أسود": "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "رمادي": "https://dfcdn.defacto.0.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "بني": "https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg"}'>
             <div class="relative">
               <img src="https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg" alt="Fleece Sweatpants" class="w-full h-64 object-cover product-image" />
               <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
@@ -1595,12 +1705,118 @@
     </div>
   </div>
 
+  <!-- Admin Panel (New Section) -->
+  <div id="adminPanel" class="page-section hidden">
+    <div class="container mx-auto px-6 py-12">
+      <div class="admin-card">
+        <h2 class="admin-title">لوحة تحكم المنتجات</h2>
+
+        <!-- Admin Login Form -->
+        <div id="adminLoginForm" class="mb-8">
+          <h3 class="text-xl font-bold mb-4">تسجيل الدخول للوحة الإدارة</h3>
+          <div class="admin-form-group">
+            <label for="adminUsername" class="admin-form-label">اسم المستخدم:</label>
+            <input type="text" id="adminUsername" class="admin-form-input" required>
+          </div>
+          <div class="admin-form-group">
+            <label for="adminPassword" class="admin-form-label">كلمة المرور:</label>
+            <input type="password" id="adminPassword" class="admin-form-input" required>
+          </div>
+          <button id="adminLoginBtn" class="admin-btn">تسجيل الدخول</button>
+        </div>
+
+        <!-- Product Management Section (hidden until logged in) -->
+        <div id="productManagementSection" class="hidden">
+          <!-- Add/Edit Product Form -->
+          <h3 class="text-xl font-bold mb-4">إضافة / تعديل منتج</h3>
+          <form id="productForm" class="space-y-4">
+            <input type="hidden" id="productId">
+            <div class="admin-form-group">
+              <label for="productName" class="admin-form-label">اسم المنتج:</label>
+              <input type="text" id="productName" class="admin-form-input" required>
+            </div>
+            <div class="admin-form-group">
+              <label for="productPrice" class="admin-form-label">السعر (EGP):</label>
+              <input type="number" id="productPrice" class="admin-form-input" required>
+            </div>
+            <div class="admin-form-group">
+              <label for="productDescription" class="admin-form-label">الوصف:</label>
+              <textarea id="productDescription" class="admin-form-textarea" rows="3"></textarea>
+            </div>
+            <div class="admin-form-group">
+              <label for="productCategory" class="admin-form-label">الفئة:</label>
+              <select id="productCategory" class="admin-form-select" required>
+                <option value="hoodies">Hoodies</option>
+                <option value="sweatpants">Sweatpants</option>
+                <option value="sets">Sets</option>
+                <option value="jackets">Jackets</option>
+              </select>
+            </div>
+            <div class="admin-form-group">
+              <label for="productSizes" class="admin-form-label">المقاسات (افصل بفاصلة):</label>
+              <input type="text" id="productSizes" class="admin-form-input" placeholder="S,M,L,XL">
+            </div>
+            <div class="admin-form-group">
+              <label for="productColors" class="admin-form-label">الألوان (افصل بفاصلة):</label>
+              <input type="text" id="productColors" class="admin-form-input" placeholder="أسود,رمادي,أزرق">
+            </div>
+            <div class="admin-form-group">
+              <label for="productMainImage" class="admin-form-label">الصورة الأساسية لبطاقة المنتج (URL):</label>
+              <input type="url" id="productMainImage" class="admin-form-input" placeholder="https://example.com/main_image.jpg" required>
+            </div>
+            <div class="admin-form-group">
+              <label for="productImages" class="admin-form-label">روابط صور المعرض (افصل بفاصلة):</label>
+              <textarea id="productImages" class="admin-form-textarea" rows="3" placeholder="url1,url2,url3"></textarea>
+              <p class="text-sm text-gray-600 mt-1">هذه الصور ستظهر في معرض الصور داخل صفحة تفاصيل المنتج.</p>
+            </div>
+            <div class="admin-form-group">
+              <label for="productColorImages" class="admin-form-label">روابط صور الألوان (JSON):</label>
+              <textarea id="productColorImages" class="admin-form-textarea" rows="3" placeholder='{"أسود": "url_black", "رمادي": "url_gray"}'></textarea>
+              <p class="text-sm text-gray-600 mt-1">مثال: `{"أسود": "url_black", "رمادي": "url_gray"}`. يجب أن تتطابق أسماء الألوان مع ما تم إدخاله في حقل "الألوان".</p>
+            </div>
+            <div class="admin-form-group">
+              <label for="productQuantity" class="admin-form-label">الكمية:</label>
+              <input type="number" id="productQuantity" class="admin-form-input" required>
+            </div>
+            <div class="admin-form-group flex items-center">
+              <input type="checkbox" id="productAvailable" class="ml-2">
+              <label for="productAvailable" class="admin-form-label mb-0">متاح للبيع</label>
+            </div>
+            <button type="submit" class="admin-btn">حفظ المنتج</button>
+            <button type="button" id="clearFormBtn" class="admin-btn admin-btn-danger">مسح النموذج</button>
+          </form>
+
+          <!-- Products List -->
+          <h3 class="text-xl font-bold mt-8 mb-4">قائمة المنتجات</h3>
+          <div class="overflow-x-auto">
+              <table class="admin-table">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>الاسم</th>
+                          <th>السعر</th>
+                          <th>الفئة</th>
+                          <th>الكمية</th>
+                          <th>متاح</th>
+                          <th>الإجراءات</th>
+                      </tr>
+                  </thead>
+                  <tbody id="adminProductsTableBody">
+                      <!-- Products will be loaded here by JavaScript -->
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="bg-blue-50 py-12">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <h3 class="text-2xl font-bold text-blue-400 mb-4">Hoodies</h3>
+          <h3 class="text-2xl font-bold text-blue-400 mb-4">مريام</h3>
           <p class="text-blue-300 mb-4">Your first destination for modern and stylish youth apparel</p>
           <div class="flex space-x-4 space-x-reverse">
             <a href="#" class="text-blue-300 hover:text-blue-400">
@@ -1653,7 +1869,15 @@
       </div>
       
       <div class="border-t border-blue-100 mt-8 pt-8 text-center text-blue-300">
-        <p>© 2024 Hoodies Store. All rights reserved.</p>
+        <p>© 2025 مريام Store. All rights reserved.</p>
+        <!-- Admin Panel Button - Moved to Footer -->
+        <button id="adminPanelBtn" class="mt-4 p-2 text-white hover:text-blue-100 transition-colors inline-block" onclick="showPage('adminPanel')">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.6-.365 1.33-.566 2.06-.566z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span class="block text-xs">Admin Panel</span>
+        </button>
       </div>
     </div>
   </footer>
@@ -1672,8 +1896,43 @@
 
     // ** Telegram Bot Configuration **
     // Replace with your actual bot token and chat ID
-    const TELEGRAM_BOT_TOKEN = '8454738651:AAGOMbloW46CFfOvg_Scv6BTFi-EoMsh67E'; 
+    const TELEGRAM_BOT_TOKEN = '8454738651:AAGGc4Fa5ONWwBikkms7AVYg6xZdgsviitU'; 
     const TELEGRAM_CHAT_ID = '5375896204';     
+
+    // Admin credentials (NOT SECURE FOR PRODUCTION)
+    const ADMIN_USERNAME = 'darkstorm';
+    const ADMIN_PASSWORD = 'darkstorm';
+
+    // NEW: Admin Device Management
+    const MAX_ADMIN_DEVICES = 3;
+    const ADMIN_DEVICE_KEY = 'admin_device_id';
+    const ALLOWED_ADMIN_DEVICES_KEY = 'allowed_admin_devices';
+
+    // Function to generate a unique device ID
+    function generateDeviceId() {
+        return 'device_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // Function to get current device ID
+    function getCurrentDeviceId() {
+        let deviceId = localStorage.getItem(ADMIN_DEVICE_KEY);
+        if (!deviceId) {
+            deviceId = generateDeviceId();
+            localStorage.setItem(ADMIN_DEVICE_KEY, deviceId);
+        }
+        return deviceId;
+    }
+
+    // Function to get allowed device IDs
+    function getAllowedAdminDevices() {
+        const devices = localStorage.getItem(ALLOWED_ADMIN_DEVICES_KEY);
+        return devices ? JSON.parse(devices) : [];
+    }
+
+    // Function to set allowed device IDs
+    function setAllowedAdminDevices(devices) {
+        localStorage.setItem(ALLOWED_ADMIN_DEVICES_KEY, JSON.stringify(devices));
+    }
 
     // Function to show a specific page and hide others
     function showPage(pageId) {
@@ -1684,10 +1943,299 @@
       // Close any open modals when switching pages
       document.getElementById('cartModal').classList.add('hidden');
       document.getElementById('productDetailModal').classList.add('hidden');
+
+      // If navigating to admin panel, handle login state
+      if (pageId === 'adminPanel') {
+        checkAdminLoginState(); // NEW: Check login state
+      } else if (pageId === 'home') { // NEW: Re-render products when returning to home
+        renderProducts();
+        initIntersectionObserver(); // NEW: Re-initialize observer for home page
+      }
     }
+
+    // NEW: Function to check admin login state
+    function checkAdminLoginState() {
+      const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+      const adminLoginForm = document.getElementById('adminLoginForm');
+      const productManagementSection = document.getElementById('productManagementSection');
+      const currentDeviceId = getCurrentDeviceId();
+      const allowedDevices = getAllowedAdminDevices();
+
+      if (isLoggedIn && allowedDevices.includes(currentDeviceId)) {
+        adminLoginForm.classList.add('hidden');
+        productManagementSection.classList.remove('hidden');
+        renderAdminProducts();
+        clearProductForm();
+      } else {
+        adminLoginForm.classList.remove('hidden');
+        productManagementSection.classList.add('hidden');
+        document.getElementById('adminUsername').value = '';
+        document.getElementById('adminPassword').value = '';
+        // If not logged in or device not allowed, ensure adminLoggedIn is false
+        localStorage.setItem('adminLoggedIn', 'false'); 
+      }
+    }
+
+    // NEW: Function to handle admin login
+    function handleAdminLogin() {
+      const usernameInput = document.getElementById('adminUsername').value;
+      const passwordInput = document.getElementById('adminPassword').value;
+      const currentDeviceId = getCurrentDeviceId();
+      let allowedDevices = getAllowedAdminDevices();
+
+      if (usernameInput === ADMIN_USERNAME && passwordInput === ADMIN_PASSWORD) {
+        if (allowedDevices.includes(currentDeviceId)) {
+            // Device already allowed, just log in
+            localStorage.setItem('adminLoggedIn', 'true');
+            showNotification('تم تسجيل الدخول بنجاح إلى لوحة الإدارة!', true);
+            checkAdminLoginState();
+        } else if (allowedDevices.length < MAX_ADMIN_DEVICES) {
+            // Add new device to allowed list
+            allowedDevices.push(currentDeviceId);
+            setAllowedAdminDevices(allowedDevices);
+            localStorage.setItem('adminLoggedIn', 'true');
+            showNotification('تم تسجيل الدخول بنجاح إلى لوحة الإدارة! تم اعتماد هذا الجهاز.', true);
+            checkAdminLoginState();
+        } else {
+            showNotification(`لا يمكن تسجيل الدخول. لقد وصلت إلى الحد الأقصى للأجهزة المسموح بها (${MAX_ADMIN_DEVICES}).`, false, true);
+            localStorage.setItem('adminLoggedIn', 'false'); // Ensure not logged in
+        }
+      } else {
+        showNotification('اسم المستخدم أو كلمة المرور غير صحيحة.', false, true);
+        localStorage.setItem('adminLoggedIn', 'false'); // Ensure not logged in
+      }
+    }
+
+    // Initial products data (extracted from HTML for easier management)
+    const defaultProductsData = [
+        {
+            id: 1,
+            name: "Basic Hoodie",
+            price: 300,
+            description: "Comfortable and modern hoodie, perfect for daily wear",
+            category: "hoodies",
+            sizes: ["S", "M", "L", "XL", "XXL"],
+            colors: ["أسود", "رمادي", "أزرق", "أبيض"],
+            available: true,
+            quantity: 20,
+            mainImage: "https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", // Added mainImage
+            images: ["https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&s", "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"],
+            colorImages: {"أسود": "https://cdn-images.farfetch-contents.com/27/48/39/46/27483946_57262455_600.jpg", "رمادي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHymRabsI2JRbdt1dKWo8JRr9yUs0nF5oTg&s", "أزرق": "https://media.6media.me/media/catalog/product/3/0/3024204_32n7-4.jpg", "أبيض": "https://z.nooncdn.com/products/tr:n-t_400/v1610518165/N43641047V_1.jpg"}
+        },
+        {
+            id: 2,
+            name: "Slim Fit Sweatpants",
+            price: 250,
+            description: "Comfortable and modern sweatpants, perfect for sports or lounging",
+            category: "sweatpants",
+            sizes: ["S", "M", "L", "XL"],
+            colors: ["أسود", "رمادي", "كحلي"],
+            available: true,
+            quantity: 50,
+            mainImage: "https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", // Added mainImage
+            images: ["https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"],
+            colorImages: {"أسود": "https://dfcdn.defacto.com.tr/6/E5976AX_25SP_BK81_04_03.jpg", "رمادي": "https://cdn.youcan.shop/stores/c023a9c7898b66b88d276331c3f34279/products/HWBdi9BPj2nUrfpOlYHT7uQLiGtDS6mAw09ByXC2.jpeg", "كحلي": "https://dfcdn.defacto.com.tr/6/B3345AX_25SP_NV241_03_03.jpg"}
+        },
+        {
+            id: 3,
+            name: "Oversized Hoodie",
+            price: 380,
+            description: "Trendy oversized hoodie for a youthful and comfortable look",
+            category: "hoodies",
+            sizes: ["M", "L", "XL", "XXL"],
+            colors: ["بيج", "أخضر", "بني"],
+            available: true,
+            quantity: 30,
+            mainImage: "https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768", // Added mainImage
+            images: ["https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768", "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"],
+            colorImages: {"بيج": "https://media.alshaya.com/adobe/assets/urn:aaid:aem:ee649a46-e9a2-48f9-8ff9-559b6b239ae0/as/EID-26e523b49d13527ad3947fca5667cbc45de6a69b.jpg?preferwebp=true&width=768", "أخضر": "https://media.6media.me/media/catalog/product/8/6/8683050300812-3.jpg", "بني": "https://shechick.com/wp-content/uploads/2023/01/M11005.jpg"}
+        },
+        {
+            id: 4,
+            name: "Cargo Sweatpants",
+            price: 320,
+            description: "Practical and stylish cargo sweatpants",
+            category: "sweatpants",
+            sizes: ["S", "M", "L", "XL"],
+            colors: ["أسود", "زيتي", "بيج"],
+            available: true,
+            quantity: 40,
+            mainImage: "https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg", // Added mainImage
+            images: ["https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_01_02.jpg", "https://robeen-collection.com/upload/items/1706214839-43.jpg", "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"],
+            colorImages: {"أسود": "https://dfcdn.defacto.com.tr/6/B4377AX_24SP_BK81_04_03.jpg", "زيتي": "https://robeen-collection.com/upload/items/1706214839-43.jpg", "بيج": "https://khotwh.com/cdn/shop/files/beige-cargo-pant-797611_736x.jpg?v=1746663242"}
+        },
+        {
+            id: 5,
+            name: "Zip-Up Hoodie",
+            price: 350,
+            description: "Practical full-zip hoodie, easy to wear and take off",
+            category: "hoodies",
+            sizes: ["S", "M", "L", "XL", "XXL"],
+            colors: ["أسود", "رمادي", "أبيض"],
+            available: true,
+            quantity: 25,
+            mainImage: "https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", // Added mainImage
+            images: ["https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"],
+            colorImages: {"أسود": "https://media.6media.me/media/catalog/product/a/0/a09240000-1.jpg", "رمادي": "https://cdn-images.farfetch-contents.com/26/92/98/21/26929821_56889454_600.jpg", "أبيض": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMxbqKVEDbKRAb0A6hEr53pxEcTR5NqAovyw&s"}
+        },
+        {
+            id: 6,
+            name: "Hoodie & Sweatpants Set",
+            price: 600,
+            description: "Coordinated set for a complete and comfortable youthful look",
+            category: "sets",
+            sizes: ["S", "M", "L", "XL"],
+            colors: ["أسود", "رمادي", "كحلي"],
+            available: true,
+            quantity: 15,
+            mainImage: "https://m.media-amazon.com/images/I/614zok5ahvL.jpg", // Added mainImage
+            images: ["https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"],
+            colorImages: {"أسود": "https://cdn.dsmcdn.com/mnresize/600/-/ty1557/product/media/images/ty1555/prod/QC/20240919/03/739752cb-98ee-3cc9-8356-b97d248084ec/1_org_zoom.jpg", "رمادي": "https://m.media-amazon.com/images/I/614zok5ahvL.jpg", "كحلي": "https://images-na.ssl-images-amazon.com/images/I/41DOAxlfDfL._SL500_._AC_SL500_.jpg"}
+        },
+        {
+            id: 7,
+            name: "Lightweight Jacket",
+            price: 450,
+            description: "Light and trendy jacket, perfect for mild days",
+            category: "jackets",
+            sizes: ["M", "L", "XL"],
+            colors: ["أسود", "زيتي", "رمادي"],
+            available: true,
+            quantity: 10,
+            mainImage: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", // Added mainImage
+            images: ["https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYwHDvtPmHJIIS5-MMv6bQg&s", "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"],
+            colorImages: {"أسود": "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true", "زيتي": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-xvWJQPeUFTvYHDvtPmHJIIS5-MMv6bQg&s", "رمادي": "https://m.media-amazon.com/images/I/41q2m5tfQfL._SY1000_.jpg"}
+        },
+        {
+            id: 8,
+            name: "Graphic Hoodie",
+            price: 400,
+            description: "Unique hoodie with a trendy graphic, adds a unique touch to your look",
+            category: "hoodies",
+            sizes: ["S", "M", "L", "XL"],
+            colors: ["أسود", "أبيض", "أزرق"],
+            available: false,
+            quantity: 0,
+            mainImage: "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", // Added mainImage
+            images: ["https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "https://media.alshaya.com/adobe/assets/urn:aaid:aem:76e45537-a683-4a14-af96-81b3f542ded6/as/EID-258442c58379228d25a5870f6202898ed5cb4327.jpg?preferwebp=true&width=768", "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"],
+            colorImages: {"أسود": "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "أبيض": "https://cdn-images.farfetch-contents.com/28/90/01/22/28900122_58207630_600.jpg", "أزرق": "https://cdn-images.farfetch-contents.com/30/86/48/48/30864848_59961396_600.jpg"}
+        },
+        {
+            id: 9,
+            name: "Fleece Sweatpants",
+            price: 300,
+            description: "Warm and comfortable fleece sweatpants, perfect for winter",
+            category: "sweatpants",
+            sizes: ["M", "L", "XL", "XXL"],
+            colors: ["أسود", "رمادي", "بني"],
+            available: true,
+            quantity: 35,
+            mainImage: "https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg", // Added mainImage
+            images: ["https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg", "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw3e2fdb1a/original/90_1013537-1A09785_1B000_10_BaroccoLightPufferJacket-Jackets-Versace-online-store_0_5.jpg?sw=850&q=85&strip=true"],
+            colorImages: {"أسود": "https://egytar.com/wp-content/uploads/2024/05/1-5.jpg", "رمادي": "https://dfcdn.defacto.com.tr/7/S7370AZ_23WN_GR453_04_01.jpg", "بني": "https://dfcdn.defacto.com.tr/7/D3206A8_24WN_BN569_04_03.jpg"}
+        }
+    ];
+
+    // Load productsData from localStorage, or use default if not found
+    let productsData = JSON.parse(localStorage.getItem('productsData')) || defaultProductsData;
+
+    // Function to render products on the main page
+    function renderProducts() {
+        const productsGrid = document.getElementById('productsGrid');
+        productsGrid.innerHTML = ''; // Clear existing products
+
+        productsData.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = `bg-white rounded-xl shadow-lg overflow-hidden card-hover product-card animate-on-scroll`;
+            productCard.setAttribute('data-id', product.id);
+            productCard.setAttribute('data-category', product.category);
+            productCard.setAttribute('data-sizes', product.sizes.join(','));
+            productCard.setAttribute('data-colors', product.colors.join(','));
+            productCard.setAttribute('data-available', product.available);
+            productCard.setAttribute('data-quantity', product.quantity);
+            // Ensure images and colorImages are stringified JSON for data attributes
+            productCard.setAttribute('data-main-image', product.mainImage || (product.images && product.images.length > 0 ? product.images[0] : '')); // Use mainImage or first image
+            productCard.setAttribute('data-images', JSON.stringify(product.images));
+            productCard.setAttribute('data-color-images', JSON.stringify(product.colorImages));
+
+            // Use the mainImage for the card display
+            const cardImageSrc = product.mainImage || (product.images && product.images.length > 0 ? product.images[0] : '');
+
+            productCard.innerHTML = `
+                <div class="relative">
+                    <img src="${cardImageSrc}" alt="${product.name}" class="w-full h-64 object-cover product-image" />
+                    <button class="absolute top-4 right-4 p-2 bg-white rounded-full heart-icon" onclick="toggleWishlist(this)">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">${product.price} EGP</span>
+                        ${product.available && product.quantity > 0 ? 
+                            `<button class="bg-blue-300 text-white px-4 py-2 rounded-full hover:bg-blue-400 transition-colors add-to-cart animated-button">
+                                Add to Cart
+                            </button>` :
+                            `<button class="bg-gray-400 text-white px-4 py-2 rounded-full cursor-not-allowed" disabled>
+                                Out of Stock
+                            </button>`
+                        }
+                    </div>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+
+        // Re-initialize event listeners for newly rendered products
+        initAddToCartListeners();
+        initWishlistItems();
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.add-to-cart') || e.target.closest('.heart-icon')) {
+                    return;
+                }
+                openProductDetailModal(this);
+            });
+        });
+    }
+
+    // Function to initialize Intersection Observer
+    let productObserver; // Declare a global variable for the observer
+    function initIntersectionObserver() {
+      const animateElements = document.querySelectorAll('.animate-on-scroll, .animate-scale-in');
+
+      const observerOptions = {
+        root: null, // relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.1 // 10% of the element must be visible
+      };
+
+      // Disconnect previous observer if it exists
+      if (productObserver) {
+        productObserver.disconnect();
+      }
+
+      productObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      }, observerOptions);
+
+      animateElements.forEach(element => {
+        productObserver.observe(element);
+      });
+    }
+
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', function() {
+      renderProducts(); // Render products from productsData
       updateCartDisplay();
       updateWishlistDisplay();
       updateWishlistPage();
@@ -1701,6 +2249,7 @@
       initAddToCartListeners();
       initFilterButtons();
       initWishlistItems();
+      initIntersectionObserver(); // Call it here initially
 
       // Header scroll effect
       window.addEventListener('scroll', function() {
@@ -1712,19 +2261,11 @@
         }
       });
 
-      // Add event listeners to product cards for opening detail modal
-      document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-          // Prevent opening modal if clicking on add to cart or wishlist button
-          if (e.target.closest('.add-to-cart') || e.target.closest('.heart-icon')) {
-            return;
-          }
-          openProductDetailModal(this);
-        });
-      });
-
       // Close product detail modal
-      document.getElementById('closeProductDetail').addEventListener('click', closeProductDetailModal);
+      document.getElementById('closeProductDetail').addEventListener('click', function() {
+        closeProductDetailModal();
+        showPage('home'); // Always return to home page
+      });
 
       // Add to cart from product detail modal
       document.getElementById('modalAddToCartBtn').addEventListener('click', function() {
@@ -1745,7 +2286,8 @@
             const productToAdd = {
                 name: currentProduct.name,
                 price: currentProduct.price,
-                image: currentProduct.images[0], // Default image
+                // Use the currently displayed image (either from gallery or color-specific)
+                image: document.getElementById('modalProductImage').src, 
                 description: currentProduct.description,
                 size: selectedSize || (requiresSize ? '' : 'مقاس واحد'), // Use selected or default
                 color: selectedColor || (requiresColor ? '' : 'متعدد'), // Use selected or default
@@ -1847,7 +2389,7 @@
             return;
         }
 
-        let orderDetails = `✅ *طلب جديد من متجر هوديز* ✅\n\n`;
+        let orderDetails = `✅ *طلب جديد من متجر مريام* ✅\n\n`;
         orderDetails += `*بيانات العميل:*\n`;
         orderDetails += `الاسم: ${fullName}\n`;
         orderDetails += `الهاتف 1: ${phone1}\n`;
@@ -1898,28 +2440,6 @@
         showNotification('More products will be added soon!', false, false, 'text-red-500'); // Changed to red
       });
 
-      // Animation on scroll functionality
-      const animateElements = document.querySelectorAll('.animate-on-scroll, .animate-scale-in');
-
-      const observerOptions = {
-        root: null, // relative to the viewport
-        rootMargin: '0px',
-        threshold: 0.1 // 10% of the element must be visible
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); // Stop observing once visible
-          }
-        });
-      }, observerOptions);
-
-      animateElements.forEach(element => {
-        observer.observe(element);
-      });
-
       // Image gallery controls
       document.getElementById('prevImageBtn').addEventListener('click', showPrevImage);
       document.getElementById('nextImageBtn').addEventListener('click', showNextImage);
@@ -1940,6 +2460,7 @@
         const productDetailModal = document.getElementById('productDetailModal');
         const cartModal = document.getElementById('cartModal');
         const checkoutPage = document.getElementById('checkoutPage');
+        const adminPanel = document.getElementById('adminPanel'); // New
 
         if (!productDetailModal.classList.contains('hidden')) {
             // If product detail modal is open, close it and restore scroll position
@@ -1968,23 +2489,52 @@
                 cartModal.classList.add('scale-100', 'opacity-100');
             }, 10);
             history.pushState({ modal: 'cart', scrollY: previousScrollPosition }, '', '#cart'); // Manually push cart modal state back
-        } else if (event.state && event.state.page) {
+        } else if (adminPanel.classList.contains('active')) { // New: Handle admin panel
+            showPage('home'); // Go back to home from admin panel
+            history.replaceState({ page: 'home' }, '', '#home');
+        }
+        else if (event.state && event.state.page) {
             // If there's a state, navigate to that page
             showPage(event.state.page);
+            if (event.state.page === 'home') { // NEW: Re-initialize observer when returning to home
+                initIntersectionObserver();
+            }
             if (event.state.scrollY !== undefined) {
                 window.scrollTo(0, event.state.scrollY);
             }
         } else {
             // Default to home if no specific state
             showPage('home');
+            initIntersectionObserver(); // NEW: Re-initialize observer on initial home load
+            history.replaceState({ page: 'home' }, '', '#home');
         }
       });
 
-      // Initial state for home page
-      history.replaceState({ page: 'home' }, '', '#home');
+      // Initial page load check for hash
+      const initialHash = window.location.hash.substring(1); // Remove the '#'
+      if (initialHash && document.getElementById(initialHash)) {
+          showPage(initialHash);
+          if (initialHash === 'home') { // NEW: Re-initialize observer on initial home load
+              initIntersectionObserver();
+          }
+          history.replaceState({ page: initialHash }, '', '#' + initialHash);
+      } else {
+          showPage('home');
+          initIntersectionObserver(); // NEW: Re-initialize observer on initial home load
+          history.replaceState({ page: 'home' }, '', '#home');
+      }
 
-      // Three.js Integration (removed initThreeJS() call as it's not used in hero section)
-      // initThreeJS(); 
+      // Admin Panel Event Listeners (New)
+      const productForm = document.getElementById('productForm');
+      productForm.addEventListener('submit', handleProductFormSubmit);
+      document.getElementById('clearFormBtn').addEventListener('click', clearProductForm);
+      
+      // NEW: Admin Login Button Listener
+      document.getElementById('adminLoginBtn').addEventListener('click', handleAdminLogin);
+
+      // Render admin products on load
+      // Moved inside checkAdminLoginState for conditional rendering
+      // renderAdminProducts(); 
     });
 
     // Function to scroll to products section
@@ -2031,17 +2581,19 @@
 
     // Add product to cart directly
     function addProductToCartDirectly(productCard) {
-      const productName = productCard.querySelector('h3').textContent;
-      const productPriceText = productCard.querySelector('span.text-xl').textContent;
-      const productPrice = parseInt(productPriceText.match(/\d+/)[0]); 
-      const productImage = productCard.dataset.images ? JSON.parse(productCard.dataset.images)[0] : ''; // Get first image
-      const productDescription = productCard.querySelector('p').textContent;
+      const productId = parseInt(productCard.dataset.id);
+      const productData = productsData.find(p => p.id === productId);
+
+      if (!productData) {
+          showNotification('Product not found.', false, true);
+          return;
+      }
 
       const product = {
-        name: productName,
-        price: productPrice,
-        image: productImage,
-        description: productDescription,
+        name: productData.name,
+        price: productData.price,
+        image: productData.mainImage || (productData.images && productData.images.length > 0 ? productData.images[0] : ''), // Use mainImage or first image
+        description: productData.description,
         size: 'مقاس واحد', // Default if no specific sizes
         color: 'متعدد', // Default if no specific colors
         colorImage: null, // No specific color image if no color selection
@@ -2064,28 +2616,15 @@
 
     // Open Product Detail Modal
     function openProductDetailModal(productCardElement) {
-      const productName = productCardElement.querySelector('h3').textContent;
-      const productPriceText = productCardElement.querySelector('span.text-xl').textContent;
-      const productPrice = parseInt(productPriceText.match(/\d+/)[0]);
-      const productDescription = productCardElement.querySelector('p').textContent;
-      const productSizes = productCardElement.dataset.sizes ? productCardElement.dataset.sizes.split(',') : [];
-      const productColors = productCardElement.dataset.colors ? productCardElement.dataset.colors.split(',') : []; 
-      const productAvailable = productCardElement.dataset.available === 'true';
-      const productQuantity = parseInt(productCardElement.dataset.quantity);
-      const productImages = productCardElement.dataset.images ? JSON.parse(productCardElement.dataset.images) : [];
-      const productColorImages = productCardElement.dataset.colorImages ? JSON.parse(productCardElement.dataset.colorImages) : {};
+      const productId = parseInt(productCardElement.dataset.id);
+      const product = productsData.find(p => p.id === productId);
 
-      currentProduct = {
-        name: productName,
-        price: productPrice,
-        images: productImages, // Array of all images
-        colorImages: productColorImages, // Map of color to image
-        description: productDescription,
-        sizes: productSizes,
-        colors: productColors,
-        available: productAvailable,
-        quantity: productQuantity
-      };
+      if (!product) {
+          showNotification('Product details not found.', false, true);
+          return;
+      }
+
+      currentProduct = product;
 
       // Reset selected options and image index
       selectedSize = null;
@@ -2104,7 +2643,7 @@
       // Populate sizes
       const sizesContainer = document.getElementById('sizesContainer');
       sizesContainer.innerHTML = '';
-      const requiresSizeSelection = productSizes.length > 0 && productSizes[0] !== 'مقاس واحد';
+      const requiresSizeSelection = currentProduct.sizes.length > 0 && currentProduct.sizes[0] !== 'مقاس واحد';
       if (requiresSizeSelection) {
         document.getElementById('modalProductSizes').style.display = 'block';
         currentProduct.sizes.forEach(size => {
@@ -2126,7 +2665,7 @@
       // Populate colors
       const colorsContainer = document.getElementById('colorsContainer');
       colorsContainer.innerHTML = '';
-      const requiresColorSelection = productColors.length > 0 && productColors[0] !== 'متعدد';
+      const requiresColorSelection = currentProduct.colors.length > 0 && currentProduct.colors[0] !== 'متعدد';
       if (requiresColorSelection) {
         document.getElementById('modalProductColors').style.display = 'block';
         currentProduct.colors.forEach(color => {
@@ -2134,6 +2673,33 @@
           colorBtn.textContent = color;
           colorBtn.className = `color-option-btn transition-all duration-300 ease-in-out`; // Added transition
           colorBtn.dataset.color = color; // Store color for CSS styling
+
+          // Set background color based on data-color attribute
+          // This uses the CSS rules defined in the <style> block
+          // For colors like 'أبيض' and 'بيج' that need dark text, handle it here
+          if (color === 'أبيض' || color === 'بيج' || color === 'متعدد') {
+            colorBtn.style.color = '#333'; // Dark text for light backgrounds
+            colorBtn.style.borderColor = '#ccc'; // Light border for light backgrounds
+          } else {
+            colorBtn.style.color = 'white'; // White text for dark backgrounds
+            colorBtn.style.borderColor = 'transparent'; // No border for dark backgrounds
+          }
+          // Apply the background color from the CSS variable or direct hex
+          // A more robust solution would be to map colors to hex values in JS
+          const colorMap = {
+            "أسود": "#000",
+            "رمادي": "#808080",
+            "أزرق": "#0000FF",
+            "أبيض": "#FFFFFF",
+            "كحلي": "#000080",
+            "بيج": "#F5F5DC",
+            "أخضر": "#008000",
+            "بني": "#A52A2A",
+            "زيتي": "#6B8E23",
+            "متعدد": "#ccc"
+          };
+          colorBtn.style.backgroundColor = colorMap[color] || '#ccc'; // Fallback to light gray
+
           colorBtn.addEventListener('click', () => {
             colorsContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('option-selected'));
             colorBtn.classList.add('option-selected');
@@ -2209,7 +2775,7 @@
                 thumbnailsContainer.style.display = 'flex'; // Show thumbnails if multiple images
             } else {
                 galleryControls.style.display = 'none';
-                thumbnailsContainer.style.display = 'none'; // Hide thumbnails if only one image
+                thumbnailsContainer.style.display = 'none';
             }
         } else {
             mainImage.src = ''; // Clear image if no images
@@ -2342,18 +2908,20 @@
     // Wishlist functionality
     function toggleWishlist(heartIcon) {
       const productCard = heartIcon.closest('.product-card');
-      const productName = productCard.querySelector('h3').textContent;
-      const productPriceText = productCard.querySelector('span.text-xl').textContent;
-      const productPrice = parseInt(productPriceText.match(/\d+/)[0]);
-      const productImage = productCard.dataset.images ? JSON.parse(productCard.dataset.images)[0] : ''; // Get first image
-      const productDescription = productCard.querySelector('p').textContent;
+      const productId = parseInt(productCard.dataset.id);
+      const productData = productsData.find(p => p.id === productId);
+
+      if (!productData) {
+          showNotification('Product not found.', false, true);
+          return;
+      }
       
       const product = {
-        name: productName,
-        price: productPrice,
-        image: productImage,
-        description: productDescription,
-        id: productName + productPrice
+        name: productData.name,
+        price: productData.price,
+        image: productData.mainImage || (productData.images && productData.images.length > 0 ? productData.images[0] : ''), // Use mainImage or first image
+        description: productData.description,
+        id: productData.id // Use product ID for wishlist
       };
       
       const existingIndex = wishlist.findIndex(item => item.id === product.id);
@@ -2378,13 +2946,12 @@
     function initWishlistItems() {
       document.querySelectorAll('.heart-icon').forEach(heart => {
         const productCard = heart.closest('.product-card');
-        const productName = productCard.querySelector('h3').textContent;
-        const productPriceText = productCard.querySelector('span.text-xl').textContent;
-        const productPrice = parseInt(productPriceText.match(/\d+/)[0]);
-        const productId = productName + productPrice;
+        const productId = parseInt(productCard.dataset.id);
         
         if (wishlist.some(item => item.id === productId)) {
           heart.classList.add('liked');
+        } else {
+          heart.classList.remove('liked'); // Ensure it's not liked if not in wishlist
         }
       });
     }
@@ -2546,7 +3113,7 @@
             const itemDiv = document.createElement('div');
             itemDiv.className = 'order-summary-item';
             itemDiv.innerHTML = `
-                <img src="${item.colorImage || item.image}" alt="${item.name}" />
+                <img src="${item.colorImage || item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded" />
                 <div class="order-summary-item-details">
                     <h4>${item.name}</h4>
                     <p>${item.price} جنيه</p>
@@ -2670,6 +3237,161 @@
       document.body.style.overflow = ''; // Allow scrolling body
     }
 
+    // Admin Panel Functions (New)
+    function renderAdminProducts() {
+        const tableBody = document.getElementById('adminProductsTableBody');
+        tableBody.innerHTML = ''; // Clear existing rows
+
+        productsData.forEach(product => {
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td>${product.id}</td>
+                <td>${product.name}</td>
+                <td>${product.price} EGP</td>
+                <td>${product.category}</td>
+                <td>${product.quantity}</td>
+                <td>${product.available ? 'نعم' : 'لا'}</td>
+                <td>
+                    <button onclick="editProduct(${product.id})" class="admin-btn text-sm py-1 px-2">تعديل</button>
+                    <button onclick="deleteProduct(${product.id})" class="admin-btn admin-btn-danger text-sm py-1 px-2">حذف</button>
+                </td>
+            `;
+        });
+    }
+
+    function saveProductsToLocalStorage() {
+        localStorage.setItem('productsData', JSON.stringify(productsData));
+    }
+
+    function handleProductFormSubmit(event) {
+        event.preventDefault();
+
+        const productId = document.getElementById('productId').value;
+        const name = document.getElementById('productName').value;
+        const price = parseFloat(document.getElementById('productPrice').value);
+        const description = document.getElementById('productDescription').value;
+        const category = document.getElementById('productCategory').value;
+        const mainImage = document.getElementById('productMainImage').value; 
+        
+        // Split by comma, trim whitespace, and filter out empty strings
+        const sizes = document.getElementById('productSizes').value.split(',').map(s => s.trim()).filter(s => s !== '');
+        const colors = document.getElementById('productColors').value.split(',').map(c => c.trim()).filter(c => c !== '');
+        
+        // Parse images as an array
+        let images = [];
+        try {
+            const imagesInput = document.getElementById('productImages').value;
+            if (imagesInput) {
+                images = imagesInput.split(',').map(img => img.trim()).filter(img => img !== '');
+            }
+        } catch (e) {
+            showNotification('صيغة روابط صور المعرض غير صحيحة (يجب أن تكون مفصولة بفاصلة).', false, true);
+            return;
+        }
+
+        const quantity = parseInt(document.getElementById('productQuantity').value);
+        const available = document.getElementById('productAvailable').checked;
+        let colorImages = {};
+        try {
+            const colorImagesInput = document.getElementById('productColorImages').value;
+            if (colorImagesInput) {
+                colorImages = JSON.parse(colorImagesInput);
+            }
+        } catch (e) {
+            showNotification('صيغة روابط صور الألوان غير صحيحة (يجب أن تكون JSON).', false, true);
+            return;
+        }
+
+        if (productId) {
+            // Edit existing product
+            const index = productsData.findIndex(p => p.id === parseInt(productId));
+            if (index !== -1) {
+                productsData[index] = {
+                    id: parseInt(productId),
+                    name,
+                    price,
+                    description,
+                    category,
+                    sizes,
+                    colors,
+                    mainImage, 
+                    images,
+                    colorImages,
+                    quantity,
+                    available
+                };
+                showNotification('تم تعديل المنتج بنجاح!', true);
+            } else {
+                showNotification('المنتج غير موجود.', false, true);
+            }
+        } else {
+            // Add new product
+            const newId = productsData.length > 0 ? Math.max(...productsData.map(p => p.id)) + 1 : 1;
+            const newProduct = {
+                id: newId,
+                name,
+                price,
+                description,
+                category,
+                sizes,
+                colors,
+                mainImage, 
+                images,
+                colorImages,
+                quantity,
+                available
+            };
+            productsData.push(newProduct);
+            showNotification('تم إضافة المنتج بنجاح!', true);
+        }
+
+        saveProductsToLocalStorage(); // Save changes to localStorage
+        renderAdminProducts();
+        renderProducts(); // Re-render products on main page
+        initIntersectionObserver(); // Re-initialize observer after rendering new products
+        clearProductForm();
+    }
+
+    function editProduct(id) {
+        const product = productsData.find(p => p.id === id);
+        if (product) {
+            document.getElementById('productId').value = product.id;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productDescription').value = product.description;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productSizes').value = product.sizes.join(',');
+            document.getElementById('productColors').value = product.colors.join(',');
+            document.getElementById('productMainImage').value = product.mainImage || ''; 
+            document.getElementById('productImages').value = product.images.join(',');
+            // Ensure colorImages is stringified when setting the textarea value
+            document.getElementById('productColorImages').value = JSON.stringify(product.colorImages);
+            document.getElementById('productQuantity').value = product.quantity;
+            document.getElementById('productAvailable').checked = product.available;
+            showNotification('تم تحميل بيانات المنتج للتعديل.', false);
+        } else {
+            showNotification('المنتج غير موجود.', false, true);
+        }
+    }
+
+    function deleteProduct(id) {
+        if (confirm('هل أنت متأكد أنك تريد حذف هذا المنتج؟')) {
+            productsData = productsData.filter(p => p.id !== id);
+            saveProductsToLocalStorage(); // Save changes to localStorage
+            renderAdminProducts();
+            renderProducts(); // Re-render products on main page
+            initIntersectionObserver(); // Re-initialize observer after rendering new products
+            showNotification('تم حذف المنتج بنجاح!', true);
+        }
+    }
+
+    function clearProductForm() {
+        document.getElementById('productId').value = '';
+        document.getElementById('productForm').reset();
+        document.getElementById('productAvailable').checked = true; // Default to available
+        showNotification('تم مسح النموذج.', false);
+    }
+
     // Three.js Integration (kept for reference, but not actively used in hero section)
     let scene, camera, renderer, cube;
 
@@ -2726,4 +3448,3 @@
   </script>
 </body>
 </html>
-
