@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبار بوت التليجرام</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Tajawal', sans-serif; }
+    .log { padding: 10px; margin: 5px 0; border-radius: 5px; }
+    .log.success { background: #d4edda; color: #155724; }
+    .log.error { background: #f8d7da; color: #721c24; }
+    .log.info { background: #d1ecf1; color: #0c5460; }
+  </style>
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">🧪 اختبار بوت التليجرام</h1>
+    
+    <div class="mb-6 p-4 bg-blue-50 rounded-lg">
+      <h2 class="font-bold mb-2">📋 المعلومات الحالية:</h2>
+      <p><strong>Bot Token:</strong> <code id="tokenDisplay" class="bg-gray-200 px-2 py-1 rounded text-sm"></code></p>
+      <p><strong>Chat ID:</strong> <code id="chatIdDisplay" class="bg-gray-200 px-2 py-1 rounded text-sm"></code></p>
+    </div>
+
+    <div class="mb-6">
+      <label class="block font-bold mb-2">رسالة الاختبار:</label>
+      <textarea id="testMessage" class="w-full border rounded p-3" rows="4">🧪 رسالة اختبار من متجر مريام
+
+هذه رسالة تجريبية للتأكد من عمل البوت بشكل صحيح.
+
+✅ إذا وصلتك هذه الرسالة، فالبوت يعمل بنجاح!</textarea>
+    </div>
+
+    <button onclick="testTelegram()" class="w-full bg-blue-500 text-white py-3 rounded-lg font-bold hover:bg-blue-600 transition">
+      📤 إرسال رسالة اختبار
+    </button>
+
+    <div class="mt-6">
+      <h2 class="font-bold mb-3">📝 سجل الاختبار:</h2>
+      <div id="logContainer" class="space-y-2"></div>
+    </div>
+
+    <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+      <h3 class="font-bold mb-2">⚠️ ملاحظات مهمة:</h3>
+      <ul class="list-disc list-inside space-y-1 text-sm">
+        <li>تأكد من بدء محادثة مع البوت (اضغط Start)</li>
+        <li>استخدم @userinfobot للحصول على Chat ID الصحيح</li>
+        <li>افتح Console (F12) لمزيد من التفاصيل</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    // Display current config
+    document.getElementById('tokenDisplay').textContent = TELEGRAM_BOT_TOKEN;
+    document.getElementById('chatIdDisplay').textContent = TELEGRAM_CHAT_ID;
+
+    function addLog(message, type = 'info') {
+      const logContainer = document.getElementById('logContainer');
+      const logEntry = document.createElement('div');
+      logEntry.className = `log ${type}`;
+      logEntry.textContent = `[${new Date().toLocaleTimeString('ar-EG')}] ${message}`;
+      logContainer.insertBefore(logEntry, logContainer.firstChild);
+    }
+
+    async function testTelegram() {
+      const message = document.getElementById('testMessage').value;
+      
+      addLog('🔄 جاري إرسال الرسالة...', 'info');
+      
+      // Check config
+      if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE') {
+        addLog('❌ خطأ: Bot Token غير مكوّن في config.js', 'error');
+        return;
+      }
+      
+      if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === 'YOUR_CHAT_ID_HERE') {
+        addLog('❌ خطأ: Chat ID غير مكوّن في config.js', 'error');
+        addLog('💡 استخدم @userinfobot للحصول على Chat ID', 'info');
+        return;
+      }
+
+      const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+      const params = {
+        chat_id: TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown'
+      };
+
+      try {
+        addLog('📡 الاتصال بـ Telegram API...', 'info');
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(params)
+        });
+
+        const data = await response.json();
+        
+        console.log('Telegram Response:', data);
+
+        if (data.ok) {
+          addLog('✅ نجح! تم إرسال الرسالة بنجاح', 'success');
+          addLog('✅ تحقق من تطبيق Telegram الآن', 'success');
+          addLog(`📊 Message ID: ${data.result.message_id}`, 'info');
+        } else {
+          addLog(`❌ فشل الإرسال: ${data.description}`, 'error');
+          
+          if (data.description.includes('chat not found')) {
+            addLog('💡 Chat ID غير صحيح. استخدم @userinfobot', 'error');
+          } else if (data.description.includes('bot was blocked')) {
+            addLog('💡 قم بإلغاء حظر البوت وابدأ محادثة معه', 'error');
+          } else if (data.description.includes('Unauthorized')) {
+            addLog('💡 Bot Token غير صحيح', 'error');
+          }
+          
+          console.error('Telegram Error:', data);
+        }
+      } catch (error) {
+        addLog(`❌ خطأ في الاتصال: ${error.message}`, 'error');
+        console.error('Network Error:', error);
+      }
+    }
+
+    // Initial log
+    addLog('✅ صفحة الاختبار جاهزة', 'success');
+    
+    if (TELEGRAM_BOT_TOKEN && TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN_HERE') {
+      addLog('✅ Bot Token موجود', 'success');
+    } else {
+      addLog('⚠️ Bot Token غير مكوّن', 'error');
+    }
+    
+    if (TELEGRAM_CHAT_ID && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID_HERE') {
+      addLog('✅ Chat ID موجود', 'success');
+    } else {
+      addLog('⚠️ Chat ID غير مكوّن', 'error');
+    }
+  </script>
+</body>
+</html>
